@@ -1,0 +1,2956 @@
+done
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>python -c "import hydra; print(hydra.__version__)"
+1.3.2
+
+(D:\sam2_env) D:\sam2>python -c "import iopath; print(iopath.__version__)"
+0.1.10
+
+(D:\sam2_env) D:\sam2>torch 2.4.0+cu124
+'torch' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>torchvision ??? (未安装)
+'torchvision' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>pip install torchvision==0.19.0+cu124 -f https://download.pytorch.org/whl/cu124
+Looking in links: https://download.pytorch.org/whl/cu124
+Requirement already satisfied: torchvision==0.19.0+cu124 in d:\sam2_env\lib\site-packages (0.19.0+cu124)
+Requirement already satisfied: numpy in d:\sam2_env\lib\site-packages (from torchvision==0.19.0+cu124) (1.26.4)
+Requirement already satisfied: torch==2.4.0+cu124 in d:\sam2_env\lib\site-packages (from torchvision==0.19.0+cu124) (2.4.0+cu124)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in d:\sam2_env\lib\site-packages (from torchvision==0.19.0+cu124) (12.2.0)
+Requirement already satisfied: filelock in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (3.29.1)
+Requirement already satisfied: typing-extensions>=4.8.0 in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (4.15.0)
+Requirement already satisfied: sympy in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (1.14.0)
+Requirement already satisfied: networkx in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (3.4.2)
+Requirement already satisfied: jinja2 in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (3.1.6)
+Requirement already satisfied: fsspec in d:\sam2_env\lib\site-packages (from torch==2.4.0+cu124->torchvision==0.19.0+cu124) (2026.4.0)
+Requirement already satisfied: MarkupSafe>=2.0 in d:\sam2_env\lib\site-packages (from jinja2->torch==2.4.0+cu124->torchvision==0.19.0+cu124) (3.0.3)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in d:\sam2_env\lib\site-packages (from sympy->torch==2.4.0+cu124->torchvision==0.19.0+cu124) (1.3.0)
+
+(D:\sam2_env) D:\sam2>python -c "import torchvision; print(torchvision.__version__)"
+0.19.0+cu124
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>cd /d D:\sam2
+
+(D:\sam2_env) D:\sam2>set SAM2_BUILD_CUDA=0
+
+(D:\sam2_env) D:\sam2>pip install --no-deps -e .
+Obtaining file:///D:/sam2
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Building wheels for collected packages: SAM-2
+  Building editable for SAM-2 (pyproject.toml) ... done
+  Created wheel for SAM-2: filename=sam_2-1.0-0.editable-py3-none-any.whl size=13874 sha256=fa25acc16d29677d14d8634c97d3145a2fc6f0700a5f4538f92ca8af6746f6d8
+  Stored in directory: C:\Users\LEGION\AppData\Local\Temp\pip-ephem-wheel-cache-bfdmwnhj\wheels\85\d8\6b\db91043033ec0a339d22907a8f209b07ec18fd71025291a794
+Successfully built SAM-2
+Installing collected packages: SAM-2
+Successfully installed SAM-2-1.0
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>python -c "from sam2.build_sam import build_sam2; print('SAM2 安装成功!')"
+SAM2 安装成功!
+
+(D:\sam2_env) D:\sam2>cd /d D:\sam2
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>mkdir checkpoints
+子目录或文件 checkpoints 已经存在。
+
+(D:\sam2_env) D:\sam2>cd checkpoints
+
+(D:\sam2_env) D:\sam2\checkpoints>cd /d D:\sam2
+
+(D:\sam2_env) D:\sam2>notepad test_sam2.py
+
+(D:\sam2_env) D:\sam2>python test_sam2.py
+正在加载模型...
+Traceback (most recent call last):
+  File "D:\sam2\test_sam2.py", line 11, in <module>
+    predictor = SAM2ImagePredictor(build_sam2(model_cfg, checkpoint))
+  File "D:\sam2\sam2\build_sam.py", line 93, in build_sam2
+    _load_checkpoint(model, ckpt_path)
+  File "D:\sam2\sam2\build_sam.py", line 166, in _load_checkpoint
+    sd = torch.load(ckpt_path, map_location="cpu", weights_only=True)["model"]
+  File "D:\sam2_env\lib\site-packages\torch\serialization.py", line 1065, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "D:\sam2_env\lib\site-packages\torch\serialization.py", line 468, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "D:\sam2_env\lib\site-packages\torch\serialization.py", line 449, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'checkpoints/sam2.1_hiera_large.pt'
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>dir D:\sam2\checkpoints
+ 驱动器 D 中的卷没有标签。
+ 卷的序列号是 33BA-483C
+
+ D:\sam2\checkpoints 的目录
+
+2026/06/11  22:15    <DIR>          .
+2026/06/11  22:15    <DIR>          ..
+2026/06/11  21:39             2,612 download_ckpts.sh
+2026/06/11  22:11       898,083,611 sam2.1_hiera_large .pt
+               2 个文件    898,086,223 字节
+               2 个目录 223,248,384,000 可用字节
+
+(D:\sam2_env) D:\sam2>python test_sam2.py
+正在加载模型...
+模型加载完成!
+测试图片已保存: test_image.png
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+生成了 3 个 mask
+mask 尺寸: (480, 640)
+置信度: [0.4453125  0.07177734 0.9921875 ]
+✅ SAM2 运行成功!
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>pip install nibabel SimpleITK
+Collecting nibabel
+  Using cached nibabel-5.4.2-py3-none-any.whl.metadata (8.9 kB)
+Collecting SimpleITK
+  Downloading simpleitk-2.5.5-cp310-cp310-win_amd64.whl.metadata (7.3 kB)
+Collecting importlib-resources>=5.12 (from nibabel)
+  Using cached importlib_resources-7.1.0-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: numpy>=1.25 in d:\sam2_env\lib\site-packages (from nibabel) (1.26.4)
+Requirement already satisfied: packaging>=20 in d:\sam2_env\lib\site-packages (from nibabel) (26.0)
+Requirement already satisfied: typing-extensions>=4.6 in d:\sam2_env\lib\site-packages (from nibabel) (4.15.0)
+Using cached nibabel-5.4.2-py3-none-any.whl (3.3 MB)
+Downloading simpleitk-2.5.5-cp310-cp310-win_amd64.whl (18.9 MB)
+   ---------------------------------------- 18.9/18.9 MB 596.3 kB/s  0:00:34
+Using cached importlib_resources-7.1.0-py3-none-any.whl (37 kB)
+Installing collected packages: SimpleITK, importlib-resources, nibabel
+Successfully installed SimpleITK-2.5.5 importlib-resources-7.1.0 nibabel-5.4.2
+
+(D:\sam2_env) D:\sam2>notepad mri_preprocess.py
+
+(D:\sam2_env) D:\sam2>python mri_preprocess.py
+Traceback (most recent call last):
+  File "D:\sam2\mri_preprocess.py", line 2, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+
+(D:\sam2_env) D:\sam2>pip install matplotlib
+Collecting matplotlib
+  Downloading matplotlib-3.10.9-cp310-cp310-win_amd64.whl.metadata (52 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Using cached contourpy-1.3.2-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Downloading fonttools-4.63.0-cp310-cp310-win_amd64.whl.metadata (121 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Using cached kiwisolver-1.5.0-cp310-cp310-win_amd64.whl.metadata (5.2 kB)
+Requirement already satisfied: numpy>=1.23 in d:\sam2_env\lib\site-packages (from matplotlib) (1.26.4)
+Requirement already satisfied: packaging>=20.0 in d:\sam2_env\lib\site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow>=8 in d:\sam2_env\lib\site-packages (from matplotlib) (12.2.0)
+Collecting pyparsing>=3 (from matplotlib)
+  Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading matplotlib-3.10.9-cp310-cp310-win_amd64.whl (8.2 MB)
+   ---------------------------------------- 8.2/8.2 MB 372.7 kB/s  0:00:22
+Using cached contourpy-1.3.2-cp310-cp310-win_amd64.whl (221 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.63.0-cp310-cp310-win_amd64.whl (1.6 MB)
+   ---------------------------------------- 1.6/1.6 MB 342.7 kB/s  0:00:04
+Using cached kiwisolver-1.5.0-cp310-cp310-win_amd64.whl (73 kB)
+Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: six, pyparsing, kiwisolver, fonttools, cycler, contourpy, python-dateutil, matplotlib
+Successfully installed contourpy-1.3.2 cycler-0.12.1 fonttools-4.63.0 kiwisolver-1.5.0 matplotlib-3.10.9 pyparsing-3.3.2 python-dateutil-2.9.0.post0 six-1.17.0
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>python mri_preprocess.py
+生成模拟 3D MRI 数据...
+Traceback (most recent call last):
+  File "D:\sam2\mri_preprocess.py", line 17, in <module>
+    fake_mask_3d[70:90] = mask[70:90]
+ValueError: could not broadcast input array from shape (0,240,240) into shape (20,240,240)
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\mri_preprocess.py
+
+(D:\sam2_env) D:\sam2>python mri_preprocess.py
+生成模拟 3D MRI 数据...
+提取的边界框 (BBox Prompt): [ 90  90 150 150]
+Traceback (most recent call last):
+  File "D:\sam2\mri_preprocess.py", line 54, in <module>
+    plt.gca().add_patch(plt.Rectangle(
+  File "D:\sam2_env\lib\site-packages\matplotlib\patches.py", line 772, in __init__
+    super().__init__(**kwargs)
+  File "D:\sam2_env\lib\site-packages\matplotlib\patches.py", line 99, in __init__
+    self._internal_update(kwargs)
+  File "D:\sam2_env\lib\site-packages\matplotlib\artist.py", line 1235, in _internal_update
+    return self._update_props(
+  File "D:\sam2_env\lib\site-packages\matplotlib\artist.py", line 1208, in _update_props
+    raise AttributeError(
+AttributeError: Rectangle.set() got an unexpected keyword argument 'face'
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\mri_preprocess.py
+
+(D:\sam2_env) D:\sam2>python mri_preprocess.py
+生成模拟 3D MRI 数据...
+提取的边界框 (BBox Prompt): [ 90  90 150 150]
+
+✅ 切片与提示生成测试完成！图片已保存: mri_slice_demo.png
+
+(D:\sam2_env) D:\sam2>wget --version
+'wget' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>pip install datasets
+Collecting datasets
+  Downloading datasets-5.0.0-py3-none-any.whl.metadata (23 kB)
+Requirement already satisfied: filelock in d:\sam2_env\lib\site-packages (from datasets) (3.29.1)
+Requirement already satisfied: numpy>=1.17 in d:\sam2_env\lib\site-packages (from datasets) (1.26.4)
+Collecting pyarrow>=21.0.0 (from datasets)
+  Downloading pyarrow-24.0.0-cp310-cp310-win_amd64.whl.metadata (3.0 kB)
+Collecting dill<0.4.2,>=0.3.0 (from datasets)
+  Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets)
+  Downloading pandas-2.3.3-cp310-cp310-win_amd64.whl.metadata (19 kB)
+Collecting requests>=2.32.2 (from datasets)
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting httpx<1.0.0 (from datasets)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: tqdm>=4.66.3 in d:\sam2_env\lib\site-packages (from datasets) (4.68.2)
+Collecting xxhash (from datasets)
+  Downloading xxhash-3.7.0-cp310-cp310-win_amd64.whl.metadata (13 kB)
+Collecting multiprocess<0.70.20 (from datasets)
+  Downloading multiprocess-0.70.19-py310-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: fsspec<=2026.4.0,>=2023.1.0 in d:\sam2_env\lib\site-packages (from fsspec[http]<=2026.4.0,>=2023.1.0->datasets) (2026.4.0)
+Collecting huggingface-hub<2.0,>=0.25.0 (from datasets)
+  Downloading huggingface_hub-1.19.0-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging in d:\sam2_env\lib\site-packages (from datasets) (26.0)
+Requirement already satisfied: pyyaml>=5.1 in d:\sam2_env\lib\site-packages (from datasets) (6.0.3)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading aiohttp-3.14.1-cp310-cp310-win_amd64.whl.metadata (8.5 kB)
+Collecting anyio (from httpx<1.0.0->datasets)
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting certifi (from httpx<1.0.0->datasets)
+  Downloading certifi-2026.5.20-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0->datasets)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1.0.0->datasets)
+  Downloading idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0->datasets)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting click>=8.4.0 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading click-8.4.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting hf-xet<2.0.0,>=1.5.1 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading hf_xet-1.5.1-cp37-abi3-win_amd64.whl.metadata (4.9 kB)
+Collecting typer<0.26.0,>=0.20.0 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading typer-0.25.1-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: typing-extensions>=4.1.0 in d:\sam2_env\lib\site-packages (from huggingface-hub<2.0,>=0.25.0->datasets) (4.15.0)
+Collecting shellingham>=1.3.0 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich>=13.8.0 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting annotated-doc>=0.0.2 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading aiohappyeyeballs-2.6.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading frozenlist-1.8.0-cp310-cp310-win_amd64.whl.metadata (21 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading multidict-6.7.1-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading propcache-0.5.2-cp310-cp310-win_amd64.whl.metadata (17 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Downloading yarl-1.24.2-cp310-cp310-win_amd64.whl.metadata (97 kB)
+Requirement already satisfied: colorama in d:\sam2_env\lib\site-packages (from click>=8.4.0->huggingface-hub<2.0,>=0.25.0->datasets) (0.4.6)
+Collecting charset_normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Using cached charset_normalizer-3.4.7-cp310-cp310-win_amd64.whl.metadata (41 kB)
+Collecting urllib3<3,>=1.26 (from requests>=2.32.2->datasets)
+  Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting exceptiongroup>=1.0.2 (from anyio->httpx<1.0.0->datasets)
+  Using cached exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in d:\sam2_env\lib\site-packages (from pandas->datasets) (2.9.0.post0)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Downloading pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: six>=1.5 in d:\sam2_env\lib\site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Downloading datasets-5.0.0-py3-none-any.whl (555 kB)
+   ---------------------------------------- 555.1/555.1 kB 185.6 kB/s  0:00:04
+Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading huggingface_hub-1.19.0-py3-none-any.whl (693 kB)
+   ---------------------------------------- 693.4/693.4 kB 332.5 kB/s  0:00:02
+Downloading hf_xet-1.5.1-cp37-abi3-win_amd64.whl (4.0 MB)
+   ---------------------------------------- 4.0/4.0 MB 423.4 kB/s  0:00:09
+Downloading multiprocess-0.70.19-py310-none-any.whl (134 kB)
+Downloading typer-0.25.1-py3-none-any.whl (58 kB)
+Downloading aiohttp-3.14.1-cp310-cp310-win_amd64.whl (482 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading multidict-6.7.1-cp310-cp310-win_amd64.whl (46 kB)
+Downloading yarl-1.24.2-cp310-cp310-win_amd64.whl (92 kB)
+Downloading aiohappyeyeballs-2.6.2-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading click-8.4.1-py3-none-any.whl (116 kB)
+Downloading frozenlist-1.8.0-cp310-cp310-win_amd64.whl (43 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.18-py3-none-any.whl (65 kB)
+Downloading propcache-0.5.2-cp310-cp310-win_amd64.whl (42 kB)
+Downloading pyarrow-24.0.0-cp310-cp310-win_amd64.whl (27.3 MB)
+   --- ------------------------------------ 2.1/27.3 MB ? eta -:--:--
+ERROR: Operation cancelled by user
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\download_brain_mri.py
+
+(D:\sam2_env) D:\sam2>pip install datasets
+Collecting datasets
+  Using cached datasets-5.0.0-py3-none-any.whl.metadata (23 kB)
+Requirement already satisfied: filelock in d:\sam2_env\lib\site-packages (from datasets) (3.29.1)
+Requirement already satisfied: numpy>=1.17 in d:\sam2_env\lib\site-packages (from datasets) (1.26.4)
+Collecting pyarrow>=21.0.0 (from datasets)
+  Using cached pyarrow-24.0.0-cp310-cp310-win_amd64.whl.metadata (3.0 kB)
+Collecting dill<0.4.2,>=0.3.0 (from datasets)
+  Using cached dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets)
+  Using cached pandas-2.3.3-cp310-cp310-win_amd64.whl.metadata (19 kB)
+Collecting requests>=2.32.2 (from datasets)
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting httpx<1.0.0 (from datasets)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: tqdm>=4.66.3 in d:\sam2_env\lib\site-packages (from datasets) (4.68.2)
+Collecting xxhash (from datasets)
+  Using cached xxhash-3.7.0-cp310-cp310-win_amd64.whl.metadata (13 kB)
+Collecting multiprocess<0.70.20 (from datasets)
+  Using cached multiprocess-0.70.19-py310-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: fsspec<=2026.4.0,>=2023.1.0 in d:\sam2_env\lib\site-packages (from fsspec[http]<=2026.4.0,>=2023.1.0->datasets) (2026.4.0)
+Collecting huggingface-hub<2.0,>=0.25.0 (from datasets)
+  Using cached huggingface_hub-1.19.0-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging in d:\sam2_env\lib\site-packages (from datasets) (26.0)
+Requirement already satisfied: pyyaml>=5.1 in d:\sam2_env\lib\site-packages (from datasets) (6.0.3)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached aiohttp-3.14.1-cp310-cp310-win_amd64.whl.metadata (8.5 kB)
+Collecting anyio (from httpx<1.0.0->datasets)
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting certifi (from httpx<1.0.0->datasets)
+  Using cached certifi-2026.5.20-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0->datasets)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1.0.0->datasets)
+  Using cached idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0->datasets)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting click>=8.4.0 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached click-8.4.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting hf-xet<2.0.0,>=1.5.1 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached hf_xet-1.5.1-cp37-abi3-win_amd64.whl.metadata (4.9 kB)
+Collecting typer<0.26.0,>=0.20.0 (from huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached typer-0.25.1-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: typing-extensions>=4.1.0 in d:\sam2_env\lib\site-packages (from huggingface-hub<2.0,>=0.25.0->datasets) (4.15.0)
+Collecting shellingham>=1.3.0 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich>=13.8.0 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting annotated-doc>=0.0.2 (from typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached aiohappyeyeballs-2.6.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached frozenlist-1.8.0-cp310-cp310-win_amd64.whl.metadata (21 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached multidict-6.7.1-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached propcache-0.5.2-cp310-cp310-win_amd64.whl.metadata (17 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets)
+  Using cached yarl-1.24.2-cp310-cp310-win_amd64.whl.metadata (97 kB)
+Requirement already satisfied: colorama in d:\sam2_env\lib\site-packages (from click>=8.4.0->huggingface-hub<2.0,>=0.25.0->datasets) (0.4.6)
+Collecting charset_normalizer<4,>=2 (from requests>=2.32.2->datasets)
+  Using cached charset_normalizer-3.4.7-cp310-cp310-win_amd64.whl.metadata (41 kB)
+Collecting urllib3<3,>=1.26 (from requests>=2.32.2->datasets)
+  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.8.0->typer<0.26.0,>=0.20.0->huggingface-hub<2.0,>=0.25.0->datasets)
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting exceptiongroup>=1.0.2 (from anyio->httpx<1.0.0->datasets)
+  Using cached exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in d:\sam2_env\lib\site-packages (from pandas->datasets) (2.9.0.post0)
+Collecting pytz>=2020.1 (from pandas->datasets)
+  Using cached pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets)
+  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: six>=1.5 in d:\sam2_env\lib\site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
+Using cached datasets-5.0.0-py3-none-any.whl (555 kB)
+Using cached dill-0.4.1-py3-none-any.whl (120 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached huggingface_hub-1.19.0-py3-none-any.whl (693 kB)
+Using cached hf_xet-1.5.1-cp37-abi3-win_amd64.whl (4.0 MB)
+Using cached multiprocess-0.70.19-py310-none-any.whl (134 kB)
+Using cached typer-0.25.1-py3-none-any.whl (58 kB)
+Using cached aiohttp-3.14.1-cp310-cp310-win_amd64.whl (482 kB)
+Using cached async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Using cached multidict-6.7.1-cp310-cp310-win_amd64.whl (46 kB)
+Using cached yarl-1.24.2-cp310-cp310-win_amd64.whl (92 kB)
+Using cached aiohappyeyeballs-2.6.2-py3-none-any.whl (15 kB)
+Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached click-8.4.1-py3-none-any.whl (116 kB)
+Using cached frozenlist-1.8.0-cp310-cp310-win_amd64.whl (43 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached idna-3.18-py3-none-any.whl (65 kB)
+Using cached propcache-0.5.2-cp310-cp310-win_amd64.whl (42 kB)
+Downloading pyarrow-24.0.0-cp310-cp310-win_amd64.whl (27.3 MB)
+   ---------------------------------------- 27.3/27.3 MB 259.7 kB/s  0:01:46
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.4.7-cp310-cp310-win_amd64.whl (159 kB)
+Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+Downloading certifi-2026.5.20-py3-none-any.whl (134 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+Using cached exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+Downloading pandas-2.3.3-cp310-cp310-win_amd64.whl (11.3 MB)
+   ---------------------------------------- 11.3/11.3 MB 268.7 kB/s  0:00:43
+Downloading pytz-2026.2-py2.py3-none-any.whl (510 kB)
+Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Downloading xxhash-3.7.0-cp310-cp310-win_amd64.whl (31 kB)
+Installing collected packages: pytz, xxhash, urllib3, tzdata, shellingham, pygments, pyarrow, propcache, multidict, mdurl, idna, hf-xet, h11, frozenlist, exceptiongroup, dill, click, charset_normalizer, certifi, attrs, async-timeout, annotated-doc, aiohappyeyeballs, yarl, requests, pandas, multiprocess, markdown-it-py, httpcore, anyio, aiosignal, rich, httpx, aiohttp, typer, huggingface-hub, datasets
+Successfully installed aiohappyeyeballs-2.6.2 aiohttp-3.14.1 aiosignal-1.4.0 annotated-doc-0.0.4 anyio-4.13.0 async-timeout-5.0.1 attrs-26.1.0 certifi-2026.5.20 charset_normalizer-3.4.7 click-8.4.1 datasets-5.0.0 dill-0.4.1 exceptiongroup-1.3.1 frozenlist-1.8.0 h11-0.16.0 hf-xet-1.5.1 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-1.19.0 idna-3.18 markdown-it-py-4.2.0 mdurl-0.1.2 multidict-6.7.1 multiprocess-0.70.19 pandas-2.3.3 propcache-0.5.2 pyarrow-24.0.0 pygments-2.20.0 pytz-2026.2 requests-2.34.2 rich-15.0.0 shellingham-1.5.4 typer-0.25.1 tzdata-2026.2 urllib3-2.7.0 xxhash-3.7.0 yarl-1.24.2
+
+(D:\sam2_env) D:\sam2>pip install nilearn
+Collecting nilearn
+  Downloading nilearn-0.13.1-py3-none-any.whl.metadata (12 kB)
+Requirement already satisfied: jinja2>=3.1.2 in d:\sam2_env\lib\site-packages (from nilearn) (3.1.6)
+Collecting joblib>=1.2.0 (from nilearn)
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Requirement already satisfied: nibabel>=5.2.0 in d:\sam2_env\lib\site-packages (from nilearn) (5.4.2)
+Requirement already satisfied: numpy>=1.22.4 in d:\sam2_env\lib\site-packages (from nilearn) (1.26.4)
+Requirement already satisfied: packaging in d:\sam2_env\lib\site-packages (from nilearn) (26.0)
+Requirement already satisfied: pandas>=2.2.0 in d:\sam2_env\lib\site-packages (from nilearn) (2.3.3)
+Requirement already satisfied: requests>=2.30.0 in d:\sam2_env\lib\site-packages (from nilearn) (2.34.2)
+Collecting scikit-learn>=1.4.0 (from nilearn)
+  Downloading scikit_learn-1.7.2-cp310-cp310-win_amd64.whl.metadata (11 kB)
+Collecting scipy>=1.9.0 (from nilearn)
+  Using cached scipy-1.15.3-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in d:\sam2_env\lib\site-packages (from jinja2>=3.1.2->nilearn) (3.0.3)
+Requirement already satisfied: importlib-resources>=5.12 in d:\sam2_env\lib\site-packages (from nibabel>=5.2.0->nilearn) (7.1.0)
+Requirement already satisfied: typing-extensions>=4.6 in d:\sam2_env\lib\site-packages (from nibabel>=5.2.0->nilearn) (4.15.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in d:\sam2_env\lib\site-packages (from pandas>=2.2.0->nilearn) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in d:\sam2_env\lib\site-packages (from pandas>=2.2.0->nilearn) (2026.2)
+Requirement already satisfied: tzdata>=2022.7 in d:\sam2_env\lib\site-packages (from pandas>=2.2.0->nilearn) (2026.2)
+Requirement already satisfied: six>=1.5 in d:\sam2_env\lib\site-packages (from python-dateutil>=2.8.2->pandas>=2.2.0->nilearn) (1.17.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in d:\sam2_env\lib\site-packages (from requests>=2.30.0->nilearn) (3.4.7)
+Requirement already satisfied: idna<4,>=2.5 in d:\sam2_env\lib\site-packages (from requests>=2.30.0->nilearn) (3.18)
+Requirement already satisfied: urllib3<3,>=1.26 in d:\sam2_env\lib\site-packages (from requests>=2.30.0->nilearn) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in d:\sam2_env\lib\site-packages (from requests>=2.30.0->nilearn) (2026.5.20)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn>=1.4.0->nilearn)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Downloading nilearn-0.13.1-py3-none-any.whl (10.6 MB)
+   ---------------------------------------- 10.6/10.6 MB 238.0 kB/s  0:00:54
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Downloading scikit_learn-1.7.2-cp310-cp310-win_amd64.whl (8.9 MB)
+   ---------------------------------------- 8.9/8.9 MB 294.4 kB/s  0:00:30
+Using cached scipy-1.15.3-cp310-cp310-win_amd64.whl (41.3 MB)
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn, nilearn
+Successfully installed joblib-1.5.3 nilearn-0.13.1 scikit-learn-1.7.2 scipy-1.15.3 threadpoolctl-3.6.0
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\download_real_brain.py
+
+(D:\sam2_env) D:\sam2>python download_real_brain.py
+正在下载真实的哈佛人脑MRI模板...
+[fetch_icbm152_2009] Added README.md to C:\Users\LEGION\nilearn_data
+[fetch_icbm152_2009] Dataset created in C:\Users\LEGION\nilearn_data\icbm152_2009
+[fetch_icbm152_2009] Downloading data from https://osf.io/7pj92/download ...
+[fetch_icbm152_2009] Downloaded 155648 of 63027871 bytes (0.2%%,  6.8min remaining)
+[fetch_icbm152_2009] Downloaded 499712 of 63027871 bytes (0.8%%,  4.4min remaining)
+[fetch_icbm152_2009] Downloaded 704512 of 63027871 bytes (1.1%%,  4.6min remaining)
+[fetch_icbm152_2009] Downloaded 966656 of 63027871 bytes (1.5%%,  4.5min remaining)
+[fetch_icbm152_2009] Downloaded 1294336 of 63027871 bytes (2.1%%,  4.2min remaining)
+[fetch_icbm152_2009] Downloaded 1728512 of 63027871 bytes (2.7%%,  3.7min remaining)
+[fetch_icbm152_2009] Downloaded 2080768 of 63027871 bytes (3.3%%,  3.6min remaining)
+[fetch_icbm152_2009] Downloaded 2408448 of 63027871 bytes (3.8%%,  3.5min remaining)
+[fetch_icbm152_2009] Downloaded 2695168 of 63027871 bytes (4.3%%,  3.5min remaining)
+[fetch_icbm152_2009] Downloaded 3006464 of 63027871 bytes (4.8%%,  3.5min remaining)
+[fetch_icbm152_2009] Downloaded 3350528 of 63027871 bytes (5.3%%,  3.5min remaining)
+[fetch_icbm152_2009] Downloaded 3661824 of 63027871 bytes (5.8%%,  3.5min remaining)
+[fetch_icbm152_2009] Downloaded 4022272 of 63027871 bytes (6.4%%,  3.4min remaining)
+[fetch_icbm152_2009] Downloaded 4276224 of 63027871 bytes (6.8%%,  3.4min remaining)
+[fetch_icbm152_2009] Downloaded 4571136 of 63027871 bytes (7.3%%,  3.4min remaining)
+[fetch_icbm152_2009] Downloaded 4964352 of 63027871 bytes (7.9%%,  3.4min remaining)
+[fetch_icbm152_2009] Downloaded 5390336 of 63027871 bytes (8.6%%,  3.3min remaining)
+[fetch_icbm152_2009] Downloaded 5849088 of 63027871 bytes (9.3%%,  3.2min remaining)
+[fetch_icbm152_2009] Downloaded 6389760 of 63027871 bytes (10.1%%,  3.1min remaining)
+[fetch_icbm152_2009] Downloaded 7094272 of 63027871 bytes (11.3%%,  2.9min remaining)
+[fetch_icbm152_2009] Downloaded 7602176 of 63027871 bytes (12.1%%,  2.8min remaining)
+[fetch_icbm152_2009] Downloaded 8028160 of 63027871 bytes (12.7%%,  2.8min remaining)
+[fetch_icbm152_2009] Downloaded 8536064 of 63027871 bytes (13.5%%,  2.7min remaining)
+[fetch_icbm152_2009] Downloaded 8962048 of 63027871 bytes (14.2%%,  2.6min remaining)
+[fetch_icbm152_2009] Downloaded 9486336 of 63027871 bytes (15.1%%,  2.6min remaining)
+[fetch_icbm152_2009] Downloaded 9945088 of 63027871 bytes (15.8%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 10240000 of 63027871 bytes (16.2%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 10575872 of 63027871 bytes (16.8%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 10960896 of 63027871 bytes (17.4%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 11272192 of 63027871 bytes (17.9%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 11550720 of 63027871 bytes (18.3%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 11780096 of 63027871 bytes (18.7%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 12042240 of 63027871 bytes (19.1%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 12271616 of 63027871 bytes (19.5%%,  2.6min remaining)
+[fetch_icbm152_2009] Downloaded 12533760 of 63027871 bytes (19.9%%,  2.6min remaining)
+[fetch_icbm152_2009] Downloaded 12812288 of 63027871 bytes (20.3%%,  2.6min remaining)
+[fetch_icbm152_2009] Downloaded 13139968 of 63027871 bytes (20.8%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 13533184 of 63027871 bytes (21.5%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 13991936 of 63027871 bytes (22.2%%,  2.5min remaining)
+[fetch_icbm152_2009] Downloaded 14450688 of 63027871 bytes (22.9%%,  2.4min remaining)
+[fetch_icbm152_2009] Downloaded 14991360 of 63027871 bytes (23.8%%,  2.4min remaining)
+[fetch_icbm152_2009] Downloaded 15384576 of 63027871 bytes (24.4%%,  2.3min remaining)
+[fetch_icbm152_2009] Downloaded 15925248 of 63027871 bytes (25.3%%,  2.3min remaining)
+[fetch_icbm152_2009] Downloaded 16556032 of 63027871 bytes (26.3%%,  2.2min remaining)
+[fetch_icbm152_2009] Downloaded 17104896 of 63027871 bytes (27.1%%,  2.2min remaining)
+[fetch_icbm152_2009] Downloaded 17563648 of 63027871 bytes (27.9%%,  2.1min remaining)
+[fetch_icbm152_2009] Downloaded 18268160 of 63027871 bytes (29.0%%,  2.1min remaining)
+[fetch_icbm152_2009] Downloaded 18776064 of 63027871 bytes (29.8%%,  2.0min remaining)
+[fetch_icbm152_2009] Downloaded 19349504 of 63027871 bytes (30.7%%,  2.0min remaining)
+[fetch_icbm152_2009] Downloaded 20054016 of 63027871 bytes (31.8%%,  1.9min remaining)
+[fetch_icbm152_2009] Downloaded 20578304 of 63027871 bytes (32.6%%,  1.9min remaining)
+[fetch_icbm152_2009] Downloaded 21225472 of 63027871 bytes (33.7%%,  1.8min remaining)
+[fetch_icbm152_2009] Downloaded 21823488 of 63027871 bytes (34.6%%,  1.8min remaining)
+[fetch_icbm152_2009] Downloaded 22347776 of 63027871 bytes (35.5%%,  1.8min remaining)
+[fetch_icbm152_2009] Downloaded 22888448 of 63027871 bytes (36.3%%,  1.7min remaining)
+[fetch_icbm152_2009] Downloaded 23445504 of 63027871 bytes (37.2%%,  1.7min remaining)
+[fetch_icbm152_2009] Downloaded 23904256 of 63027871 bytes (37.9%%,  1.7min remaining)
+[fetch_icbm152_2009] Downloaded 24412160 of 63027871 bytes (38.7%%,  1.6min remaining)
+[fetch_icbm152_2009] Downloaded 24920064 of 63027871 bytes (39.5%%,  1.6min remaining)
+[fetch_icbm152_2009] Downloaded 25468928 of 63027871 bytes (40.4%%,  1.6min remaining)
+[fetch_icbm152_2009] Downloaded 26066944 of 63027871 bytes (41.4%%,  1.6min remaining)
+[fetch_icbm152_2009] Downloaded 26492928 of 63027871 bytes (42.0%%,  1.5min remaining)
+[fetch_icbm152_2009] Downloaded 27115520 of 63027871 bytes (43.0%%,  1.5min remaining)
+[fetch_icbm152_2009] Downloaded 27836416 of 63027871 bytes (44.2%%,  1.5min remaining)
+[fetch_icbm152_2009] Downloaded 28459008 of 63027871 bytes (45.2%%,  1.4min remaining)
+[fetch_icbm152_2009] Downloaded 29188096 of 63027871 bytes (46.3%%,  1.4min remaining)
+[fetch_icbm152_2009] Downloaded 29810688 of 63027871 bytes (47.3%%,  1.3min remaining)
+[fetch_icbm152_2009] Downloaded 30351360 of 63027871 bytes (48.2%%,  1.3min remaining)
+[fetch_icbm152_2009] Downloaded 31006720 of 63027871 bytes (49.2%%,  1.3min remaining)
+[fetch_icbm152_2009] Downloaded 31662080 of 63027871 bytes (50.2%%,  1.2min remaining)
+[fetch_icbm152_2009] Downloaded 32407552 of 63027871 bytes (51.4%%,  1.2min remaining)
+[fetch_icbm152_2009] Downloaded 33062912 of 63027871 bytes (52.5%%,  1.2min remaining)
+[fetch_icbm152_2009] Downloaded 33882112 of 63027871 bytes (53.8%%,  1.1min remaining)
+[fetch_icbm152_2009] Downloaded 34717696 of 63027871 bytes (55.1%%,  1.1min remaining)
+[fetch_icbm152_2009] Downloaded 35659776 of 63027871 bytes (56.6%%,  1.0min remaining)
+[fetch_icbm152_2009] Downloaded 36872192 of 63027871 bytes (58.5%%,   58.1s remaining)
+[fetch_icbm152_2009] Downloaded 37601280 of 63027871 bytes (59.7%%,   56.1s remaining)
+[fetch_icbm152_2009] Downloaded 38920192 of 63027871 bytes (61.8%%,   52.0s remaining)
+[fetch_icbm152_2009] Downloaded 40206336 of 63027871 bytes (63.8%%,   48.3s remaining)
+[fetch_icbm152_2009] Downloaded 41549824 of 63027871 bytes (65.9%%,   44.5s remaining)
+[fetch_icbm152_2009] Downloaded 43114496 of 63027871 bytes (68.4%%,   40.2s remaining)
+[fetch_icbm152_2009] Downloaded 44548096 of 63027871 bytes (70.7%%,   36.6s remaining)
+[fetch_icbm152_2009] Downloaded 45858816 of 63027871 bytes (72.8%%,   33.4s remaining)
+[fetch_icbm152_2009] Downloaded 47022080 of 63027871 bytes (74.6%%,   30.7s remaining)
+[fetch_icbm152_2009] Downloaded 48562176 of 63027871 bytes (77.0%%,   27.2s remaining)
+[fetch_icbm152_2009] Downloaded 50053120 of 63027871 bytes (79.4%%,   24.0s remaining)
+[fetch_icbm152_2009] Downloaded 51265536 of 63027871 bytes (81.3%%,   21.4s remaining)
+[fetch_icbm152_2009] Downloaded 52469760 of 63027871 bytes (83.2%%,   19.0s remaining)
+[fetch_icbm152_2009] Downloaded 53657600 of 63027871 bytes (85.1%%,   16.7s remaining)
+[fetch_icbm152_2009] Downloaded 54689792 of 63027871 bytes (86.8%%,   14.7s remaining)
+[fetch_icbm152_2009] Downloaded 55697408 of 63027871 bytes (88.4%%,   12.8s remaining)
+[fetch_icbm152_2009] Downloaded 56549376 of 63027871 bytes (89.7%%,   11.3s remaining)
+[fetch_icbm152_2009] Downloaded 57606144 of 63027871 bytes (91.4%%,    9.4s remaining)
+[fetch_icbm152_2009] Downloaded 58654720 of 63027871 bytes (93.1%%,    7.5s remaining)
+[fetch_icbm152_2009] Downloaded 59899904 of 63027871 bytes (95.0%%,    5.3s remaining)
+[fetch_icbm152_2009] Downloaded 61194240 of 63027871 bytes (97.1%%,    3.1s remaining)
+[fetch_icbm152_2009] Downloaded 62406656 of 63027871 bytes (99.0%%,    1.0s remaining)
+[fetch_icbm152_2009]  ...done. (110 seconds, 1 min)
+
+[fetch_icbm152_2009] Extracting data from
+C:\Users\LEGION\nilearn_data\icbm152_2009\5bbf70456de633bed64bc2300f901983\download...
+[fetch_icbm152_2009] .. done.
+
+✅ 真实脑部图像下载并处理完成！
+正在生成 30 张真实脑部+肿瘤数据...
+
+✅ 数据集生成完毕！保存在: D:\sam2\brain_mri_data
+🔥 报告展示图已保存: real_brain_tumor_demo.png
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\lora_module.py
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+设备: cuda
+
+构建 SAM2 模型...
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 93, in <module>
+    sam2_model = build_sam2(SAM2_CFG, SAM2_CKPT, device=DEVICE)
+  File "D:\sam2\sam2\build_sam.py", line 90, in build_sam2
+    cfg = compose(config_name=config_file, overrides=hydra_overrides_extra)
+  File "D:\sam2_env\lib\site-packages\hydra\compose.py", line 38, in compose
+    cfg = gh.hydra.compose_config(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\hydra.py", line 594, in compose_config
+    cfg = self.config_loader.load_configuration(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\config_loader_impl.py", line 142, in load_configuration
+    return self._load_configuration_impl(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\config_loader_impl.py", line 253, in _load_configuration_impl
+    defaults_list = create_defaults_list(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 745, in create_defaults_list
+    defaults, tree = _create_defaults_list(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 715, in _create_defaults_list
+    defaults_tree = _create_defaults_tree(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 356, in _create_defaults_tree
+    ret = _create_defaults_tree_impl(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 457, in _create_defaults_tree_impl
+    return _expand_virtual_root(repo, root, overrides, skip_missing)
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 280, in _expand_virtual_root
+    subtree = _create_defaults_tree_impl(
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 464, in _create_defaults_tree_impl
+    config_not_found_error(repo=repo, tree=root)
+  File "D:\sam2_env\lib\site-packages\hydra\_internal\defaults_list.py", line 799, in config_not_found_error
+    raise MissingConfigException(
+hydra.errors.MissingConfigException: Cannot find primary config 'D:\sam2\sam2_configs\sam2.1_hiera_l.yaml'. Check that it's in your config search path.
+
+Config search path:
+        provider=hydra, path=pkg://hydra.conf
+        provider=main, path=pkg://sam2
+        provider=schema, path=structured://
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>notepad D:\sam2\check_sam2_env.py
+
+(D:\sam2_env) D:\sam2>python check_sam2_env.py
+sam2包路径: D:\sam2\sam2\__init__.py
+
+sam2_configs目录: D:\sam2\sam2\sam2_configs
+  是否存在: False
+
+checkpoint目录: D:\sam2\checkpoints
+  是否存在: True
+    download_ckpts.sh  (0.0 MB)
+    sam2.1_hiera_large.pt  (856.5 MB)
+
+D:\sam2\sam2_configs目录: D:\sam2\sam2_configs
+  是否存在: False
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\find_yaml.py
+
+(D:\sam2_env) D:\sam2>python find_yaml.py
+正在搜索 D:\sam2 下所有 .yaml 文件...
+
+D:\sam2\docker-compose.yaml
+D:\sam2\.github\workflows\check_fmt.yml
+D:\sam2\sam2\sam2_hiera_b+.yaml
+D:\sam2\sam2\sam2_hiera_l.yaml
+D:\sam2\sam2\sam2_hiera_s.yaml
+D:\sam2\sam2\sam2_hiera_t.yaml
+D:\sam2\sam2\configs\sam2\sam2_hiera_b+.yaml
+D:\sam2\sam2\configs\sam2\sam2_hiera_l.yaml
+D:\sam2\sam2\configs\sam2\sam2_hiera_s.yaml
+D:\sam2\sam2\configs\sam2\sam2_hiera_t.yaml
+D:\sam2\sam2\configs\sam2.1\sam2.1_hiera_b+.yaml
+D:\sam2\sam2\configs\sam2.1\sam2.1_hiera_l.yaml
+D:\sam2\sam2\configs\sam2.1\sam2.1_hiera_s.yaml
+D:\sam2\sam2\configs\sam2.1\sam2.1_hiera_t.yaml
+D:\sam2\sam2\configs\sam2.1_training\sam2.1_hiera_b+_MOSE_finetune.yaml
+
+搜索完毕
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\read_build_sam.py
+
+(D:\sam2_env) D:\sam2>python read_build_sam.py
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import logging
+import os
+
+import torch
+from hydra import compose
+from hydra.utils import instantiate
+from omegaconf import OmegaConf
+
+import sam2
+
+# Check if the user is running Python from the parent directory of the sam2 repo
+# (i.e. the directory where this repo is cloned into) -- this is not supported since
+# it could shadow the sam2 package and cause issues.
+if os.path.isdir(os.path.join(sam2.__path__[0], "sam2")):
+    # If the user has "sam2/sam2" in their path, they are likey importing the repo itself
+    # as "sam2" rather than importing the "sam2" python package (i.e. "sam2/sam2" directory).
+    # This typically happens because the user is running Python from the parent directory
+    # that contains the sam2 repo they cloned.
+    raise RuntimeError(
+        "You're likely running Python from the parent directory of the sam2 repository "
+        "(i.e. the directory where https://github.com/facebookresearch/sam2 is cloned into). "
+        "This is not supported since the `sam2` Python package could be shadowed by the "
+        "repository name (the repository is also named `sam2` and contains the Python package "
+        "in `sam2/sam2`). Please run Python from another directory (e.g. from the repo dir "
+        "rather than its parent dir, or from your home directory) after installing SAM 2."
+    )
+
+
+HF_MODEL_ID_TO_FILENAMES = {
+    "facebook/sam2-hiera-tiny": (
+        "configs/sam2/sam2_hiera_t.yaml",
+        "sam2_hiera_tiny.pt",
+    ),
+    "facebook/sam2-hiera-small": (
+        "configs/sam2/sam2_hiera_s.yaml",
+        "sam2_hiera_small.pt",
+    ),
+    "facebook/sam2-hiera-base-plus": (
+        "configs/sam2/sam2_hiera_b+.yaml",
+        "sam2_hiera_base_plus.pt",
+    ),
+    "facebook/sam2-hiera-large": (
+        "configs/sam2/sam2_hiera_l.yaml",
+        "sam2_hiera_large.pt",
+    ),
+    "facebook/sam2.1-hiera-tiny": (
+        "configs/sam2.1/sam2.1_hiera_t.yaml",
+        "sam2.1_hiera_tiny.pt",
+    ),
+    "facebook/sam2.1-hiera-small": (
+        "configs/sam2.1/sam2.1_hiera_s.yaml",
+        "sam2.1_hiera_small.pt",
+    ),
+    "facebook/sam2.1-hiera-base-plus": (
+        "configs/sam2.1/sam2.1_hiera_b+.yaml",
+        "sam2.1_hiera_base_plus.pt",
+    ),
+    "facebook/sam2.1-hiera-large": (
+        "configs/sam2.1/sam2.1_hiera_l.yaml",
+        "sam2.1_hiera_large.pt",
+    ),
+}
+
+
+def build_sam2(
+    config_file,
+    ckpt_path=None,
+    device="cuda",
+    mode="eval",
+    hydra_overrides_extra=[],
+    apply_postprocessing=True,
+    **kwargs,
+):
+
+    if apply_postprocessing:
+        hydra_overrides_extra = hydra_overrides_extra.copy()
+        hydra_overrides_extra += [
+            # dynamically fall back to multi-mask if the single mask is not stable
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_via_stability=true",
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_delta=0.05",
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_thresh=0.98",
+        ]
+    # Read config and init model
+    cfg = compose(config_name=config_file, overrides=hydra_overrides_extra)
+    OmegaConf.resolve(cfg)
+    model = instantiate(cfg.model, _recursive_=True)
+    _load_checkpoint(model, ckpt_path)
+    model = model.to(device)
+    if mode == "eval":
+        model.eval()
+    return model
+
+
+def build_sam2_video_predictor(
+    config_file,
+    ckpt_path=None,
+    device="cuda",
+    mode="eval",
+    hydra_overrides_extra=[],
+    apply_postprocessing=True,
+    vos_optimized=False,
+    **kwargs,
+):
+    hydra_overrides = [
+        "++model._target_=sam2.sam2_video_predictor.SAM2VideoPredictor",
+    ]
+    if vos_optimized:
+        hydra_overrides = [
+            "++model._target_=sam2.sam2_video_predictor.SAM2VideoPredictorVOS",
+            "++model.compile_image_encoder=True",  # Let sam2_base handle this
+        ]
+
+    if apply_postprocessing:
+        hydra_overrides_extra = hydra_overrides_extra.copy()
+        hydra_overrides_extra += [
+            # dynamically fall back to multi-mask if the single mask is not stable
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_via_stability=true",
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_delta=0.05",
+            "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_thresh=0.98",
+            # the sigmoid mask logits on interacted frames with clicks in the memory encoder so that the encoded masks are exactly as what users see from clicking
+            "++model.binarize_mask_from_pts_for_mem_enc=true",
+            # fill small holes in the low-res masks up to `fill_hole_area` (before resizing them to the original video resolution)
+            "++model.fill_hole_area=8",
+        ]
+    hydra_overrides.extend(hydra_overrides_extra)
+
+    # Read config and init model
+    cfg = compose(config_name=config_file, overrides=hydra_overrides)
+    OmegaConf.resolve(cfg)
+    model = instantiate(cfg.model, _recursive_=True)
+    _load_checkpoint(model, ckpt_path)
+    model = model.to(device)
+    if mode == "eval":
+        model.eval()
+    return model
+
+
+def _hf_download(model_id):
+    from huggingface_hub import hf_hub_download
+
+    config_name, checkpoint_name = HF_MODEL_ID_TO_FILENAMES[model_id]
+    ckpt_path = hf_hub_download(repo_id=model_id, filename=checkpoint_name)
+    return config_name, ckpt_path
+
+
+def build_sam2_hf(model_id, **kwargs):
+    config_name, ckpt_path = _hf_download(model_id)
+    return build_sam2(config_file=config_name, ckpt_path=ckpt_path, **kwargs)
+
+
+def build_sam2_video_predictor_hf(model_id, **kwargs):
+    config_name, ckpt_path = _hf_download(model_id)
+    return build_sam2_video_predictor(
+        config_file=config_name, ckpt_path=ckpt_path, **kwargs
+    )
+
+
+def _load_checkpoint(model, ckpt_path):
+    if ckpt_path is not None:
+        sd = torch.load(ckpt_path, map_location="cpu", weights_only=True)["model"]
+        missing_keys, unexpected_keys = model.load_state_dict(sd)
+        if missing_keys:
+            logging.error(missing_keys)
+            raise RuntimeError()
+        if unexpected_keys:
+            logging.error(unexpected_keys)
+            raise RuntimeError()
+        logging.info("Loaded checkpoint sucessfully")
+
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+设备: cuda
+
+构建 SAM2 模型...
+
+注入 LoRA (r=8, alpha=16)...
+  成功注入 30 个 LoRA 层
+
+启用 LoRA + BitFit 训练策略...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+📊 参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+训练集: 24 张, 测试集: 6 张
+
+开始训练，共 20 个 Epoch...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 141, in <module>
+    masks_pred, iou_preds, low_res_masks = predictor.predict(
+  File "D:\sam2\sam2\sam2_image_predictor.py", line 291, in predict
+    masks, iou_predictions, low_res_masks = self._predict(
+  File "D:\sam2_env\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "D:\sam2\sam2\sam2_image_predictor.py", line 420, in _predict
+    low_res_masks, iou_predictions, _, _ = self.model.sam_mask_decoder(
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\mask_decoder.py", line 136, in forward
+    masks, iou_pred, mask_tokens_out, object_score_logits = self.predict_masks(
+  File "D:\sam2\sam2\modeling\sam\mask_decoder.py", line 213, in predict_masks
+    hs, src = self.transformer(src, pos_src, tokens)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 95, in forward
+    queries, keys = layer(
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 161, in forward
+    queries = self.self_attn(q=queries, k=queries, v=queries)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 232, in forward
+    q = self.q_proj(q)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\lora_module.py", line 35, in forward
+    lora_out = (x @ self.lora_A @ self.lora_B) * self.scaling
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat2 in method wrapper_CUDA_mm)
+
+(D:\sam2_env) D:\sam2>python -c "
+
+(D:\sam2_env) D:\sam2>code = '''\"\"\"
+'code' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>LoRA: Low-Rank Adaptation
+'LoRA:' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>\"\"\"
+'\"\"\"' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>import torch
+'import' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>import torch.nn as nn
+'import' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>import math
+'import' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>class LoRALayer(nn.Module):
+'class' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    def __init__(self, original_linear, r=8, alpha=16):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        super().__init__()
+'super' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        self.original_linear = original_linear
+'self.original_linear' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        self.r = r
+'self.r' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        self.alpha = alpha
+'self.alpha' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        self.scaling = alpha / r
+'self.scaling' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>        in_features = original_linear.in_features
+'in_features' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        out_features = original_linear.out_features
+'out_features' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>        self.original_linear.weight.requires_grad = False
+'self.original_linear.weight.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        if self.original_linear.bias is not None:
+此时不应有 is。
+
+(D:\sam2_env) D:\sam2>            self.original_linear.bias.requires_grad = False
+'self.original_linear.bias.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>        self.lora_A = nn.Parameter(torch.zeros(in_features, r).to(original_linear.weight.device))
+'self.lora_A' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        self.lora_B = nn.Parameter(torch.zeros(r, out_features).to(original_linear.weight.device))
+'self.lora_B' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>        nn.init.kaiming_uniform_(self.lora_A, a=math.sqrt(5))
+'nn.init.kaiming_uniform_' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        nn.init.zeros_(self.lora_B)
+'nn.init.zeros_' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>    def forward(self, x):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        original_out = self.original_linear(x)
+'original_out' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        lora_A = self.lora_A.to(x.device)
+'lora_A' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        lora_B = self.lora_B.to(x.device)
+'lora_B' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        lora_out = (x @ lora_A @ lora_B) * self.scaling
+'lora_out' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        return original_out + lora_out
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>def inject_lora_into_model(model, target_modules=[\"q_proj\", \"v_proj\"], r=8, alpha=16):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    injected_count = 0
+'injected_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    injected_names = []
+'injected_names' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    for name, module in model.named_modules():
+此时不应有 name。
+
+(D:\sam2_env) D:\sam2>        if any(t in name for t in target_modules):
+此时不应有 in。
+
+(D:\sam2_env) D:\sam2>            if isinstance(module, nn.Linear):
+此时不应有 nn.Linear):。
+
+(D:\sam2_env) D:\sam2>                parts = name.split(\".\")
+'parts' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                parent = model
+'parent' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                for part in parts[:-1]:
+此时不应有 part。
+
+(D:\sam2_env) D:\sam2>                    parent = getattr(parent, part)
+'parent' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                attr_name = parts[-1]
+'attr_name' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                lora_layer = LoRALayer(module, r=r, alpha=alpha)
+'lora_layer' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                setattr(parent, attr_name, lora_layer)
+'setattr' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                injected_count += 1
+'injected_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>                injected_names.append(name)
+'injected_names.append' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    return injected_count, injected_names
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>def enable_lora_only(model):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    trainable_count = 0
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    frozen_count = 0
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    for name, param in model.named_parameters():
+此时不应有 name。
+
+(D:\sam2_env) D:\sam2>        if \"lora_A\" in name or \"lora_B\" in name:
+此时不应有 in。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = True
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            trainable_count += 1
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        else:
+'else:' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = False
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            frozen_count += 1
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    print(f\"  LoRA可训练参数: {trainable_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  冻结参数: {frozen_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    return trainable_count, frozen_count
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>def enable_bitfit(model):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    trainable_count = 0
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    frozen_count = 0
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    for name, param in model.named_parameters():
+此时不应有 name。
+
+(D:\sam2_env) D:\sam2>        if \"bias\" in name:
+此时不应有 in。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = True
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            trainable_count += 1
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        else:
+'else:' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = False
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            frozen_count += 1
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    print(f\"  BitFit可训练参数(bias): {trainable_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  冻结参数: {frozen_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    return trainable_count, frozen_count
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>def enable_lora_and_bitfit(model):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    trainable_count = 0
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    frozen_count = 0
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    for name, param in model.named_parameters():
+此时不应有 name。
+
+(D:\sam2_env) D:\sam2>        if \"lora_A\" in name or \"lora_B\" in name or \"bias\" in name:
+此时不应有 in。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = True
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            trainable_count += 1
+'trainable_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>        else:
+'else:' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            param.requires_grad = False
+'param.requires_grad' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>            frozen_count += 1
+'frozen_count' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    print(f\"  LoRA+BitFit可训练参数: {trainable_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  冻结参数: {frozen_count} 个\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    return trainable_count, frozen_count
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>
+(D:\sam2_env) D:\sam2>def count_parameters(model):
+'def' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    total = sum(p.numel() for p in model.parameters())
+'total' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+'trainable' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    frozen = total - trainable
+'frozen' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    print(f\"\\n   参数统计:\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  总参数:     {total:>12,}\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  可训练参数: {trainable:>12,} ({trainable/total*100:.2f}%)\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    print(f\"  冻结参数:   {frozen:>12,} ({frozen/total*100:.2f}%)\")
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>    return total, trainable, frozen
+'return' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>'''
+''''' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>with open(r'D:\\sam2\\lora_module.py', 'w', encoding='utf-8') as f:
+'with' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>    f.write(code)
+'f.write' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>print('✅ lora_module.py 已修复！')
+无法初始化设备 PRN
+
+(D:\sam2_env) D:\sam2>"
+'"' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\fix_lora.py
+
+(D:\sam2_env) D:\sam2>python fix_lora.py
+✅ lora_module.py 已修复！
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+设备: cuda
+
+构建 SAM2 模型...
+
+注入 LoRA (r=8, alpha=16)...
+  成功注入 30 个 LoRA 层
+
+启用 LoRA + BitFit 训练策略...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+训练集: 24 张, 测试集: 6 张
+
+开始训练，共 20 个 Epoch...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 165, in <module>
+    loss.backward()
+  File "D:\sam2_env\lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "D:\sam2_env\lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "D:\sam2_env\lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\diag_predictor.py
+
+(D:\sam2_env) D:\sam2>python diag_predictor.py
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+=== predictor 属性 ===
+  _bb_feat_sizes: list = [(256, 256), (128, 128), (64, 64)]
+  _features: dict keys=['image_embed', 'high_res_feats']
+    image_embed: shape=torch.Size([1, 256, 64, 64]), device=cuda:0
+    high_res_feats: list len=2
+      [0]: shape=torch.Size([1, 32, 256, 256]), device=cuda:0
+      [1]: shape=torch.Size([1, 64, 128, 128]), device=cuda:0
+  _is_batch: bool = False
+  _is_image_set: bool = True
+  _orig_hw: list = [(256, 256)]
+  device: device = cuda:0
+  mask_threshold: float = 0.0
+
+=== sam2_model 子模块 ===
+  image_encoder: ImageEncoder
+  mask_downsample: Conv2d
+  memory_attention: MemoryAttention
+  memory_encoder: MemoryEncoder
+  sam_prompt_encoder: PromptEncoder
+  sam_mask_decoder: MaskDecoder
+  obj_ptr_proj: MLP
+  obj_ptr_tpos_proj: Linear
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\diag2.py
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\diag2.py
+
+(D:\sam2_env) D:\sam2>python diag2.py
+============================================================
+sam2_image_predictor.py 关键部分:
+============================================================
+  86:     def set_image(
+  87:         self,
+  88:         image: Union[np.ndarray, Image],
+  89:     ) -> None:
+  90:         """
+  91:         Calculates the image embeddings for the provided image, allowing
+  92:         masks to be predicted with the 'predict' method.
+  93:
+  94:         Arguments:
+  95:           image (np.ndarray or PIL Image): The input image to embed in RGB format. The image should be in HWC format if np.ndarray, or WHC format if PIL Image
+  96:           with pixel values in [0, 255].
+  97:           image_format (str): The color format of the image, in ['RGB', 'BGR'].
+  98:         """
+  99:         self.reset_predictor()
+ 100:         # Transform the image to the form expected by the model
+ 101:         if isinstance(image, np.ndarray):
+ 102:             logging.info("For numpy array image, we assume (HxWxC) format")
+ 103:             self._orig_hw = [image.shape[:2]]
+ 104:         elif isinstance(image, Image):
+ 105:             w, h = image.size
+ 106:             self._orig_hw = [(h, w)]
+ 107:         else:
+ 108:             raise NotImplementedError("Image format not supported")
+ 109:
+ 110:         input_image = self._transforms(image)
+ 111:         input_image = input_image[None, ...].to(self.device)
+ 112:
+ 113:         assert (
+ 114:             len(input_image.shape) == 4 and input_image.shape[1] == 3
+ 115:         ), f"input_image must be of size 1x3xHxW, got {input_image.shape}"
+ 116:         logging.info("Computing image embeddings for the provided image...")
+ 117:         backbone_out = self.model.forward_image(input_image)
+ 118:         _, vision_feats, _, _ = self.model._prepare_backbone_features(backbone_out)
+ 119:         # Add no_mem_embed, which is added to the lowest rest feat. map during training on videos
+ 120:         if self.model.directly_add_no_mem_embed:
+ 121:             vision_feats[-1] = vision_feats[-1] + self.model.no_mem_embed
+ 122:
+ 123:         feats = [
+ 124:             feat.permute(1, 2, 0).view(1, -1, *feat_size)
+ 125:             for feat, feat_size in zip(vision_feats[::-1], self._bb_feat_sizes[::-1])
+ 126:         ][::-1]
+ 127:         self._features = {"image_embed": feats[-1], "high_res_feats": feats[:-1]}
+ 128:         self._is_image_set = True
+ 129:         logging.info("Image embeddings computed.")
+ 130:
+ 131:     @torch.no_grad()
+ 132:     def set_image_batch(
+ 133:         self,
+ 134:         image_list: List[Union[np.ndarray]],
+ 135:     ) -> None:
+ 136:         """
+ 137:         Calculates the image embeddings for the provided image batch, allowing
+ 138:         masks to be predicted with the 'predict_batch' method.
+ 139:
+ 140:         Arguments:
+ 141:           image_list (List[np.ndarray]): The input images to embed in RGB format. The image should be in HWC format if np.ndarray
+ 142:           with pixel values in [0, 255].
+ 143:         """
+ 144:         self.reset_predictor()
+ 145:         assert isinstance(image_list, list)
+ 146:         self._orig_hw = []
+ 147:         for image in image_list:
+ 148:             assert isinstance(
+ 149:                 image, np.ndarray
+ 150:             ), "Images are expected to be an np.ndarray in RGB format, and of shape  HWC"
+ 151:             self._orig_hw.append(image.shape[:2])
+ 152:         # Transform the image to the form expected by the model
+ 153:         img_batch = self._transforms.forward_batch(image_list)
+ 154:         img_batch = img_batch.to(self.device)
+ 155:         batch_size = img_batch.shape[0]
+ 156:         assert (
+ 157:             len(img_batch.shape) == 4 and img_batch.shape[1] == 3
+ 158:         ), f"img_batch must be of size Bx3xHxW, got {img_batch.shape}"
+ 159:         logging.info("Computing image embeddings for the provided images...")
+ 160:         backbone_out = self.model.forward_image(img_batch)
+ 161:         _, vision_feats, _, _ = self.model._prepare_backbone_features(backbone_out)
+ 162:         # Add no_mem_embed, which is added to the lowest rest feat. map during training on videos
+ 163:         if self.model.directly_add_no_mem_embed:
+ 164:             vision_feats[-1] = vision_feats[-1] + self.model.no_mem_embed
+ 165:
+ 166:         feats = [
+ 167:             feat.permute(1, 2, 0).view(batch_size, -1, *feat_size)
+ 168:             for feat, feat_size in zip(vision_feats[::-1], self._bb_feat_sizes[::-1])
+ 169:         ][::-1]
+ 170:         self._features = {"image_embed": feats[-1], "high_res_feats": feats[:-1]}
+ 171:         self._is_image_set = True
+ 172:         self._is_batch = True
+ 173:         logging.info("Image embeddings computed.")
+ 174:
+ 175:     def predict_batch(
+ 176:         self,
+ 177:         point_coords_batch: List[np.ndarray] = None,
+ 178:         point_labels_batch: List[np.ndarray] = None,
+ 179:         box_batch: List[np.ndarray] = None,
+ 180:         mask_input_batch: List[np.ndarray] = None,
+ 181:         multimask_output: bool = True,
+ 182:         return_logits: bool = False,
+ 183:         normalize_coords=True,
+ 184:     ) -> Tuple[List[np.ndarray], List[np.ndarray], List[np.ndarray]]:
+ 185:         """This function is very similar to predict(...), however it is used for batched mode, when the model is expected to generate predictions on multiple images.
+ 186:         It returns a tuple of lists of masks, ious, and low_res_masks_logits.
+ 187:         """
+ 188:         assert self._is_batch, "This function should only be used when in batched mode"
+ 189:         if not self._is_image_set:
+ 190:             raise RuntimeError(
+ 191:                 "An image must be set with .set_image_batch(...) before mask prediction."
+ 192:             )
+ 193:         num_images = len(self._features["image_embed"])
+ 194:         all_masks = []
+ 195:         all_ious = []
+ 196:         all_low_res_masks = []
+ 197:         for img_idx in range(num_images):
+ 198:             # Transform input prompts
+ 199:             point_coords = (
+ 200:                 point_coords_batch[img_idx] if point_coords_batch is not None else None
+ 201:             )
+ 202:             point_labels = (
+ 203:                 point_labels_batch[img_idx] if point_labels_batch is not None else None
+ 204:             )
+ 205:             box = box_batch[img_idx] if box_batch is not None else None
+ 206:             mask_input = (
+ 207:                 mask_input_batch[img_idx] if mask_input_batch is not None else None
+ 208:             )
+ 209:             mask_input, unnorm_coords, labels, unnorm_box = self._prep_prompts(
+ 210:                 point_coords,
+ 211:                 point_labels,
+ 212:                 box,
+ 213:                 mask_input,
+ 214:                 normalize_coords,
+ 215:                 img_idx=img_idx,
+ 216:             )
+ 217:             masks, iou_predictions, low_res_masks = self._predict(
+ 218:                 unnorm_coords,
+ 219:                 labels,
+ 220:                 unnorm_box,
+ 221:                 mask_input,
+ 222:                 multimask_output,
+ 223:                 return_logits=return_logits,
+ 224:                 img_idx=img_idx,
+ 225:             )
+ 226:             masks_np = masks.squeeze(0).float().detach().cpu().numpy()
+ 227:             iou_predictions_np = (
+ 228:                 iou_predictions.squeeze(0).float().detach().cpu().numpy()
+ 229:             )
+ 230:             low_res_masks_np = low_res_masks.squeeze(0).float().detach().cpu().numpy()
+ 231:             all_masks.append(masks_np)
+ 232:             all_ious.append(iou_predictions_np)
+ 233:             all_low_res_masks.append(low_res_masks_np)
+ 234:
+ 235:         return all_masks, all_ious, all_low_res_masks
+ 236:
+ 237:     def predict(
+ 238:         self,
+ 239:         point_coords: Optional[np.ndarray] = None,
+ 240:         point_labels: Optional[np.ndarray] = None,
+ 241:         box: Optional[np.ndarray] = None,
+ 242:         mask_input: Optional[np.ndarray] = None,
+ 243:         multimask_output: bool = True,
+ 244:         return_logits: bool = False,
+ 245:         normalize_coords=True,
+ 246:     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+ 247:         """
+ 248:         Predict masks for the given input prompts, using the currently set image.
+ 249:
+ 250:         Arguments:
+ 251:           point_coords (np.ndarray or None): A Nx2 array of point prompts to the
+ 252:             model. Each point is in (X,Y) in pixels.
+ 253:           point_labels (np.ndarray or None): A length N array of labels for the
+ 254:             point prompts. 1 indicates a foreground point and 0 indicates a
+ 255:             background point.
+ 256:           box (np.ndarray or None): A length 4 array given a box prompt to the
+ 257:             model, in XYXY format.
+ 258:           mask_input (np.ndarray): A low resolution mask input to the model, typically
+ 259:             coming from a previous prediction iteration. Has form 1xHxW, where
+ 260:             for SAM, H=W=256.
+ 261:           multimask_output (bool): If true, the model will return three masks.
+ 262:             For ambiguous input prompts (such as a single click), this will often
+ 263:             produce better masks than a single prediction. If only a single
+ 264:             mask is needed, the model's predicted quality score can be used
+ 265:             to select the best mask. For non-ambiguous prompts, such as multiple
+ 266:             input prompts, multimask_output=False can give better results.
+ 267:           return_logits (bool): If true, returns un-thresholded masks logits
+ 268:             instead of a binary mask.
+ 269:           normalize_coords (bool): If true, the point coordinates will be normalized to the range [0,1] and point_coords is expected to be wrt. image dimensions.
+ 270:
+ 271:         Returns:
+ 272:           (np.ndarray): The output masks in CxHxW format, where C is the
+ 273:             number of masks, and (H, W) is the original image size.
+ 274:           (np.ndarray): An array of length C containing the model's
+ 275:             predictions for the quality of each mask.
+ 276:           (np.ndarray): An array of shape CxHxW, where C is the number
+ 277:             of masks and H=W=256. These low resolution logits can be passed to
+ 278:             a subsequent iteration as mask input.
+ 279:         """
+ 280:         if not self._is_image_set:
+ 281:             raise RuntimeError(
+ 282:                 "An image must be set with .set_image(...) before mask prediction."
+ 283:             )
+ 284:
+ 285:         # Transform input prompts
+ 286:
+ 287:         mask_input, unnorm_coords, labels, unnorm_box = self._prep_prompts(
+ 288:             point_coords, point_labels, box, mask_input, normalize_coords
+ 289:         )
+ 290:
+ 291:         masks, iou_predictions, low_res_masks = self._predict(
+ 292:             unnorm_coords,
+ 293:             labels,
+ 294:             unnorm_box,
+ 295:             mask_input,
+ 296:             multimask_output,
+ 297:             return_logits=return_logits,
+ 298:         )
+ 299:
+ 300:         masks_np = masks.squeeze(0).float().detach().cpu().numpy()
+ 301:         iou_predictions_np = iou_predictions.squeeze(0).float().detach().cpu().numpy()
+ 302:         low_res_masks_np = low_res_masks.squeeze(0).float().detach().cpu().numpy()
+ 303:         return masks_np, iou_predictions_np, low_res_masks_np
+ 304:
+ 305:     def _prep_prompts(
+
+ 337:     def _predict(
+ 338:         self,
+ 339:         point_coords: Optional[torch.Tensor],
+ 340:         point_labels: Optional[torch.Tensor],
+ 341:         boxes: Optional[torch.Tensor] = None,
+ 342:         mask_input: Optional[torch.Tensor] = None,
+ 343:         multimask_output: bool = True,
+ 344:         return_logits: bool = False,
+ 345:         img_idx: int = -1,
+ 346:     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+ 347:         """
+ 348:         Predict masks for the given input prompts, using the currently set image.
+ 349:         Input prompts are batched torch tensors and are expected to already be
+ 350:         transformed to the input frame using SAM2Transforms.
+ 351:
+ 352:         Arguments:
+ 353:           point_coords (torch.Tensor or None): A BxNx2 array of point prompts to the
+ 354:             model. Each point is in (X,Y) in pixels.
+ 355:           point_labels (torch.Tensor or None): A BxN array of labels for the
+ 356:             point prompts. 1 indicates a foreground point and 0 indicates a
+ 357:             background point.
+ 358:           boxes (np.ndarray or None): A Bx4 array given a box prompt to the
+ 359:             model, in XYXY format.
+ 360:           mask_input (np.ndarray): A low resolution mask input to the model, typically
+ 361:             coming from a previous prediction iteration. Has form Bx1xHxW, where
+ 362:             for SAM, H=W=256. Masks returned by a previous iteration of the
+ 363:             predict method do not need further transformation.
+ 364:           multimask_output (bool): If true, the model will return three masks.
+ 365:             For ambiguous input prompts (such as a single click), this will often
+ 366:             produce better masks than a single prediction. If only a single
+ 367:             mask is needed, the model's predicted quality score can be used
+ 368:             to select the best mask. For non-ambiguous prompts, such as multiple
+ 369:             input prompts, multimask_output=False can give better results.
+ 370:           return_logits (bool): If true, returns un-thresholded masks logits
+ 371:             instead of a binary mask.
+ 372:
+ 373:         Returns:
+ 374:           (torch.Tensor): The output masks in BxCxHxW format, where C is the
+ 375:             number of masks, and (H, W) is the original image size.
+ 376:           (torch.Tensor): An array of shape BxC containing the model's
+ 377:             predictions for the quality of each mask.
+ 378:           (torch.Tensor): An array of shape BxCxHxW, where C is the number
+ 379:             of masks and H=W=256. These low res logits can be passed to
+ 380:             a subsequent iteration as mask input.
+ 381:         """
+ 382:         if not self._is_image_set:
+ 383:             raise RuntimeError(
+ 384:                 "An image must be set with .set_image(...) before mask prediction."
+ 385:             )
+ 386:
+ 387:         if point_coords is not None:
+ 388:             concat_points = (point_coords, point_labels)
+ 389:         else:
+ 390:             concat_points = None
+ 391:
+ 392:         # Embed prompts
+ 393:         if boxes is not None:
+ 394:             box_coords = boxes.reshape(-1, 2, 2)
+ 395:             box_labels = torch.tensor([[2, 3]], dtype=torch.int, device=boxes.device)
+ 396:             box_labels = box_labels.repeat(boxes.size(0), 1)
+ 397:             # we merge "boxes" and "points" into a single "concat_points" input (where
+ 398:             # boxes are added at the beginning) to sam_prompt_encoder
+ 399:             if concat_points is not None:
+ 400:                 concat_coords = torch.cat([box_coords, concat_points[0]], dim=1)
+ 401:                 concat_labels = torch.cat([box_labels, concat_points[1]], dim=1)
+ 402:                 concat_points = (concat_coords, concat_labels)
+ 403:             else:
+ 404:                 concat_points = (box_coords, box_labels)
+ 405:
+ 406:         sparse_embeddings, dense_embeddings = self.model.sam_prompt_encoder(
+ 407:             points=concat_points,
+ 408:             boxes=None,
+ 409:             masks=mask_input,
+ 410:         )
+ 411:
+ 412:         # Predict masks
+ 413:         batched_mode = (
+ 414:             concat_points is not None and concat_points[0].shape[0] > 1
+ 415:         )  # multi object prediction
+ 416:         high_res_features = [
+ 417:             feat_level[img_idx].unsqueeze(0)
+ 418:             for feat_level in self._features["high_res_feats"]
+ 419:         ]
+ 420:         low_res_masks, iou_predictions, _, _ = self.model.sam_mask_decoder(
+ 421:             image_embeddings=self._features["image_embed"][img_idx].unsqueeze(0),
+ 422:             image_pe=self.model.sam_prompt_encoder.get_dense_pe(),
+ 423:             sparse_prompt_embeddings=sparse_embeddings,
+ 424:             dense_prompt_embeddings=dense_embeddings,
+ 425:             multimask_output=multimask_output,
+ 426:             repeat_image=batched_mode,
+ 427:             high_res_features=high_res_features,
+ 428:         )
+ 429:
+ 430:         # Upscale the masks to the original image resolution
+ 431:         masks = self._transforms.postprocess_masks(
+ 432:             low_res_masks, self._orig_hw[img_idx]
+ 433:         )
+ 434:         low_res_masks = torch.clamp(low_res_masks, -32.0, 32.0)
+ 435:         if not return_logits:
+ 436:             masks = masks > self.mask_threshold
+ 437:
+ 438:         return masks, iou_predictions, low_res_masks
+ 439:
+ 440:     def get_image_embedding(self) -> torch.Tensor:
+
+
+============================================================
+mask_decoder.py forward 方法:
+============================================================
+ 110:     def forward(
+ 111:         self,
+ 112:         image_embeddings: torch.Tensor,
+ 113:         image_pe: torch.Tensor,
+ 114:         sparse_prompt_embeddings: torch.Tensor,
+ 115:         dense_prompt_embeddings: torch.Tensor,
+ 116:         multimask_output: bool,
+ 117:         repeat_image: bool,
+ 118:         high_res_features: Optional[List[torch.Tensor]] = None,
+ 119:     ) -> Tuple[torch.Tensor, torch.Tensor]:
+ 120:         """
+ 121:         Predict masks given image and prompt embeddings.
+ 122:
+
+============================================================
+prompt_encoder.py forward 方法:
+============================================================
+ 160:     def forward(
+ 161:         self,
+ 162:         points: Optional[Tuple[torch.Tensor, torch.Tensor]],
+ 163:         boxes: Optional[torch.Tensor],
+ 164:         masks: Optional[torch.Tensor],
+ 165:     ) -> Tuple[torch.Tensor, torch.Tensor]:
+ 166:         """
+ 167:         Embeds different types of prompts, returning both sparse and dense
+ 168:         embeddings.
+ 169:
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+
+============================================================
+predictor._transforms:
+============================================================
+  类型: <class 'sam2.utils.transforms.SAM2Transforms'>
+  属性: ['T_destination', '__annotations__', '__call__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_apply', '_backward_hooks', '_backward_pre_hooks', '_buffers', '_call_impl', '_compiled_call_impl', '_forward_hooks', '_forward_hooks_always_called', '_forward_hooks_with_kwargs', '_forward_pre_hooks', '_forward_pre_hooks_with_kwargs', '_get_backward_hooks', '_get_backward_pre_hooks', '_get_name', '_is_full_backward_hook', '_load_from_state_dict', '_load_state_dict_post_hooks', '_load_state_dict_pre_hooks', '_maybe_warn_non_full_backward_hook', '_modules', '_named_members', '_non_persistent_buffers_set', '_parameters', '_register_load_state_dict_pre_hook', '_register_state_dict_hook', '_replicate_for_data_parallel', '_save_to_state_dict', '_slow_forward', '_state_dict_hooks', '_state_dict_pre_hooks', '_version', '_wrapped_call_impl', 'add_module', 'apply', 'bfloat16', 'buffers', 'call_super_init', 'children', 'compile', 'cpu', 'cuda', 'double', 'dump_patches', 'eval', 'extra_repr', 'float', 'forward', 'forward_batch', 'get_buffer', 'get_extra_state', 'get_parameter', 'get_submodule', 'half', 'ipu', 'load_state_dict', 'mask_threshold', 'max_hole_area', 'max_sprinkle_area', 'mean', 'modules', 'named_buffers', 'named_children', 'named_modules', 'named_parameters', 'parameters', 'postprocess_masks', 'register_backward_hook', 'register_buffer', 'register_forward_hook', 'register_forward_pre_hook', 'register_full_backward_hook', 'register_full_backward_pre_hook', 'register_load_state_dict_post_hook', 'register_module', 'register_parameter', 'register_state_dict_pre_hook', 'requires_grad_', 'resolution', 'set_extra_state', 'share_memory', 'state_dict', 'std', 'to', 'to_empty', 'to_tensor', 'train', 'training', 'transform_boxes', 'transform_coords', 'transforms', 'type', 'xpu', 'zero_grad']
+
+============================================================
+mask_decoder forward 签名:
+============================================================
+  (image_embeddings: torch.Tensor, image_pe: torch.Tensor, sparse_prompt_embeddings: torch.Tensor, dense_prompt_embeddings: torch.Tensor, multimask_output: bool, repeat_image: bool, high_res_features: Optional[List[torch.Tensor]] = None) -> Tuple[torch.Tensor, torch.Tensor]
+
+============================================================
+prompt_encoder forward 签名:
+============================================================
+  (points: Optional[Tuple[torch.Tensor, torch.Tensor]], boxes: Optional[torch.Tensor], masks: Optional[torch.Tensor]) -> Tuple[torch.Tensor, torch.Tensor]
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\fix_train.py
+
+(D:\sam2_env) D:\sam2>python fix_train.py
+  File "D:\sam2\fix_train.py", line 5
+    用 _predict 代替 predict，保持梯度流通
+                         ^
+SyntaxError: invalid character '，' (U+FF0C)
+
+(D:\sam2_env) D:\sam2>python fix_train.py
+  File "D:\sam2\fix_train.py", line 5
+    用 _predict 代替 predict，保持梯度流通
+                         ^
+SyntaxError: invalid character '，' (U+FF0C)
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 30 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 76, in <module>
+    train_ds = BrainMRIDataset(DATA_DIR, "train")
+  File "D:\sam2\train_sam2_lora.py", line 29, in __init__
+    self.files = sorted(os.listdir(self.img_dir))
+FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\sam2\\brain_mri_data\\train\\images'
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\find_data.py
+
+(D:\sam2_env) D:\sam2>python find_data.py
+=== D:\sam2 下的目录结构 ===
+sam2/
+  .clang-format
+  .gitignore
+  .watchmanconfig
+  backend.Dockerfile
+  check_sam2_env.py
+  CODE_OF_CONDUCT.md
+  CONTRIBUTING.md
+  diag2.py
+  ... (31 files total)
+  .github/
+    workflows/
+  assets/
+    model_diagram.png
+    sa_v_dataset.jpg
+  brain_mri_data/
+    images/
+    masks/
+  checkpoints/
+    download_ckpts.sh
+    sam2.1_hiera_large.pt
+  demo/
+    .gitignore
+    README.md
+    backend/
+      server/
+    data/
+      gallery/
+    frontend/
+      public/
+      schemas/
+      src/
+  notebooks/
+    automatic_mask_generator_example.ipynb
+    image_predictor_example.ipynb
+    video_predictor_example.ipynb
+    images/
+    videos/
+      bedroom/
+  output/
+  sam2/
+    automatic_mask_generator.py
+    benchmark.py
+    build_sam.py
+    sam2_hiera_b+.yaml
+    sam2_hiera_l.yaml
+    sam2_hiera_s.yaml
+    sam2_hiera_t.yaml
+    sam2_image_predictor.py
+    ... (11 files total)
+    configs/
+      sam2/
+      sam2.1/
+      sam2.1_training/
+    csrc/
+    modeling/
+      backbones/
+      sam/
+      __pycache__/
+    utils/
+      __pycache__/
+    __pycache__/
+  SAM_2.egg-info/
+    dependency_links.txt
+    PKG-INFO
+    requires.txt
+    SOURCES.txt
+    top_level.txt
+  sav_dataset/
+    LICENSE
+    LICENSE_DAVIS
+    LICENSE_VOS_BENCHMARK
+    README.md
+    requirements.txt
+    sav_evaluator.py
+    sav_visualization_example.ipynb
+    example/
+    utils/
+  tools/
+    README.md
+    vos_inference.py
+  training/
+    loss_fns.py
+    optimizer.py
+    README.md
+    train.py
+    trainer.py
+    __init__.py
+    assets/
+    dataset/
+    model/
+    scripts/
+    utils/
+  __pycache__/
+    lora_module.cpython-310.pyc
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 30 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 20 epochs...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 161, in <module>
+    loss.backward()
+  File "D:\sam2_env\lib\site-packages\torch\_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "D:\sam2_env\lib\site-packages\torch\autograd\__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "D:\sam2_env\lib\site-packages\torch\autograd\graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\diag3.py
+
+(D:\sam2_env) D:\sam2>python diag3.py
+Building model...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+Image shape: (197, 233, 3)
+
+--- Step 1: set_image (no torch.no_grad) ---
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  image_embed requires_grad: False
+  image_embed grad_fn: None
+
+--- Step 2: prompt encoding ---
+  unnorm_coords requires_grad: False
+  labels requires_grad: False
+  sparse_emb requires_grad: False
+  dense_emb requires_grad: False
+
+--- Step 3: mask decoding ---
+
+--- Checking LoRA layers ---
+  memory_attention.layers.0.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.cross_attn_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.cross_attn_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.cross_attn_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.0.cross_attn_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.cross_attn_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.cross_attn_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.cross_attn_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.1.cross_attn_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.cross_attn_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.cross_attn_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.cross_attn_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.2.cross_attn_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.cross_attn_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.cross_attn_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.cross_attn_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+  memory_attention.layers.3.cross_attn_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+  sam_mask_decoder.transformer.layers.0.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.self_attn.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.self_attn.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.self_attn.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.self_attn.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.final_attn_token_to_image.q_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.final_attn_token_to_image.q_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.final_attn_token_to_image.v_proj.lora_A: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+  sam_mask_decoder.transformer.final_attn_token_to_image.v_proj.lora_B: requires_grad=True, device=cuda:0
+    ^^^ THIS IS IN MASK DECODER ^^^
+
+  low_res_masks requires_grad: True
+  low_res_masks grad_fn: <WhereBackward0 object at 0x000001D1E76903A0>
+
+--- Step 4: loss ---
+  loss requires_grad: True
+  loss grad_fn: <BinaryCrossEntropyWithLogitsBackward0 object at 0x000001D1E76903A0>
+
+=== SUCCESS: loss has grad! Training should work! ===
+  backward() succeeded!
+  memory_attention.layers.0.self_attn.q_proj.lora_A grad: None
+  memory_attention.layers.0.self_attn.q_proj.lora_B grad: None
+  memory_attention.layers.0.self_attn.v_proj.lora_A grad: None
+  memory_attention.layers.0.self_attn.v_proj.lora_B grad: None
+  memory_attention.layers.0.cross_attn_image.q_proj.lora_A grad: None
+  memory_attention.layers.0.cross_attn_image.q_proj.lora_B grad: None
+  memory_attention.layers.0.cross_attn_image.v_proj.lora_A grad: None
+  memory_attention.layers.0.cross_attn_image.v_proj.lora_B grad: None
+  memory_attention.layers.1.self_attn.q_proj.lora_A grad: None
+  memory_attention.layers.1.self_attn.q_proj.lora_B grad: None
+  memory_attention.layers.1.self_attn.v_proj.lora_A grad: None
+  memory_attention.layers.1.self_attn.v_proj.lora_B grad: None
+  memory_attention.layers.1.cross_attn_image.q_proj.lora_A grad: None
+  memory_attention.layers.1.cross_attn_image.q_proj.lora_B grad: None
+  memory_attention.layers.1.cross_attn_image.v_proj.lora_A grad: None
+  memory_attention.layers.1.cross_attn_image.v_proj.lora_B grad: None
+  memory_attention.layers.2.self_attn.q_proj.lora_A grad: None
+  memory_attention.layers.2.self_attn.q_proj.lora_B grad: None
+  memory_attention.layers.2.self_attn.v_proj.lora_A grad: None
+  memory_attention.layers.2.self_attn.v_proj.lora_B grad: None
+  memory_attention.layers.2.cross_attn_image.q_proj.lora_A grad: None
+  memory_attention.layers.2.cross_attn_image.q_proj.lora_B grad: None
+  memory_attention.layers.2.cross_attn_image.v_proj.lora_A grad: None
+  memory_attention.layers.2.cross_attn_image.v_proj.lora_B grad: None
+  memory_attention.layers.3.self_attn.q_proj.lora_A grad: None
+  memory_attention.layers.3.self_attn.q_proj.lora_B grad: None
+  memory_attention.layers.3.self_attn.v_proj.lora_A grad: None
+  memory_attention.layers.3.self_attn.v_proj.lora_B grad: None
+  memory_attention.layers.3.cross_attn_image.q_proj.lora_A grad: None
+  memory_attention.layers.3.cross_attn_image.q_proj.lora_B grad: None
+  memory_attention.layers.3.cross_attn_image.v_proj.lora_A grad: None
+  memory_attention.layers.3.cross_attn_image.v_proj.lora_B grad: None
+  sam_mask_decoder.transformer.layers.0.self_attn.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.self_attn.q_proj.lora_B grad norm: 0.501558
+  sam_mask_decoder.transformer.layers.0.self_attn.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.self_attn.v_proj.lora_B grad norm: 5.442070
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.q_proj.lora_B grad norm: 0.785050
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.cross_attn_token_to_image.v_proj.lora_B grad norm: 4.045850
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.q_proj.lora_B grad norm: 4.852908
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.0.cross_attn_image_to_token.v_proj.lora_B grad norm: 2.642716
+  sam_mask_decoder.transformer.layers.1.self_attn.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.self_attn.q_proj.lora_B grad norm: 0.711938
+  sam_mask_decoder.transformer.layers.1.self_attn.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.self_attn.v_proj.lora_B grad norm: 0.943657
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.q_proj.lora_B grad norm: 1.622082
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.cross_attn_token_to_image.v_proj.lora_B grad norm: 5.579545
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.q_proj.lora_B grad norm: 3.613738
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.layers.1.cross_attn_image_to_token.v_proj.lora_B grad norm: 3.211213
+  sam_mask_decoder.transformer.final_attn_token_to_image.q_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.final_attn_token_to_image.q_proj.lora_B grad norm: 6.126202
+  sam_mask_decoder.transformer.final_attn_token_to_image.v_proj.lora_A grad norm: 0.000000
+  sam_mask_decoder.transformer.final_attn_token_to_image.v_proj.lora_B grad norm: 7.198426
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 30 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 20 epochs...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/20 - Loss: 2.5891
+Epoch 2/20 - Loss: 1.9226
+Epoch 3/20 - Loss: 1.4019
+Epoch 4/20 - Loss: 1.2350
+Epoch 5/20 - Loss: 1.1331
+  Val Loss: 1.0778
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/20 - Loss: 1.0846
+Epoch 7/20 - Loss: 1.0709
+Epoch 8/20 - Loss: 1.0568
+Epoch 9/20 - Loss: 1.0427
+Epoch 10/20 - Loss: 1.0403
+  Val Loss: 1.0363
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/20 - Loss: 1.0357
+Epoch 12/20 - Loss: 1.0332
+Epoch 13/20 - Loss: 1.0311
+Epoch 14/20 - Loss: 1.0295
+Epoch 15/20 - Loss: 1.0281
+  Val Loss: 1.0283
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/20 - Loss: 1.0268
+Epoch 17/20 - Loss: 1.0267
+Epoch 18/20 - Loss: 1.0231
+Epoch 19/20 - Loss: 1.0305
+Epoch 20/20 - Loss: 1.0264
+  Val Loss: 1.0340
+
+Training done! Weights saved to: D:\sam2\brain_mri_data\final_lora_weights.pth
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\inference_lora.py
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+Loading LoRA weights...
+D:\sam2\inference_lora.py:50: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  lora_sd = torch.load(LORA_CKPT, map_location=DEVICE)
+  LoRA weights loaded!
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.026 IoU=0.013
+  [2/30] brain_001.png: Dice=0.016 IoU=0.008
+  [3/30] brain_002.png: Dice=0.711 IoU=0.551
+  [4/30] brain_003.png: Dice=0.073 IoU=0.038
+  [5/30] brain_004.png: Dice=0.006 IoU=0.003
+  [6/30] brain_005.png: Dice=0.018 IoU=0.009
+  [7/30] brain_006.png: Dice=0.566 IoU=0.395
+  [8/30] brain_007.png: Dice=0.023 IoU=0.012
+  [9/30] brain_008.png: Dice=0.047 IoU=0.024
+  [10/30] brain_009.png: Dice=0.031 IoU=0.016
+  [11/30] brain_010.png: Dice=0.010 IoU=0.005
+  [12/30] brain_011.png: Dice=0.046 IoU=0.024
+  [13/30] brain_012.png: Dice=0.063 IoU=0.032
+  [14/30] brain_013.png: Dice=0.026 IoU=0.013
+  [15/30] brain_014.png: Dice=0.040 IoU=0.020
+  [16/30] brain_015.png: Dice=0.190 IoU=0.105
+  [17/30] brain_016.png: Dice=0.046 IoU=0.024
+  [18/30] brain_017.png: Dice=0.008 IoU=0.004
+  [19/30] brain_018.png: Dice=0.054 IoU=0.028
+  [20/30] brain_019.png: Dice=0.033 IoU=0.017
+  [21/30] brain_020.png: Dice=0.056 IoU=0.029
+  [22/30] brain_021.png: Dice=0.016 IoU=0.008
+  [23/30] brain_022.png: Dice=0.007 IoU=0.004
+  [24/30] brain_023.png: Dice=0.054 IoU=0.028
+  [25/30] brain_024.png: Dice=0.009 IoU=0.005
+  [26/30] brain_025.png: Dice=0.039 IoU=0.020
+  [27/30] brain_026.png: Dice=0.018 IoU=0.009
+  [28/30] brain_027.png: Dice=0.028 IoU=0.014
+  [29/30] brain_028.png: Dice=0.019 IoU=0.010
+  [30/30] brain_029.png: Dice=0.010 IoU=0.005
+
+========================================
+Average Dice: 0.0763
+Average IoU:  0.0490
+Best Dice:    0.7105
+Worst Dice:   0.0064
+Results saved to: D:\sam2\output
+========================================
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 30 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+
+参数统计:
+  总参数:      224,553,138
+  可训练参数:      451,958 (0.20%)
+  冻结参数:    224,101,180 (99.80%)
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 30 epochs (with 5 points + bbox)...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/30 - Loss: 1.3110
+Epoch 2/30 - Loss: 1.2244
+Epoch 3/30 - Loss: 1.0767
+Epoch 4/30 - Loss: 1.0584
+Epoch 5/30 - Loss: 1.0508
+  Val Loss: 1.0478
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/30 - Loss: 1.0467
+Epoch 7/30 - Loss: 1.0436
+Epoch 8/30 - Loss: 1.0404
+Epoch 9/30 - Loss: 1.0399
+Epoch 10/30 - Loss: 1.0371
+  Val Loss: 1.0375
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/30 - Loss: 1.0351
+Epoch 12/30 - Loss: 1.0330
+Epoch 13/30 - Loss: 1.0305
+Epoch 14/30 - Loss: 1.0293
+Epoch 15/30 - Loss: 1.0278
+  Val Loss: 1.0262
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/30 - Loss: 1.0237
+Epoch 17/30 - Loss: 1.0225
+Epoch 18/30 - Loss: 1.0192
+Epoch 19/30 - Loss: 1.0124
+Epoch 20/30 - Loss: 1.0034
+  Val Loss: 1.0108
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 21/30 - Loss: 0.9920
+Epoch 22/30 - Loss: 0.9824
+Epoch 23/30 - Loss: 0.9760
+Epoch 24/30 - Loss: 0.9631
+Epoch 25/30 - Loss: 0.9512
+  Val Loss: 0.9819
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 26/30 - Loss: 0.9299
+Epoch 27/30 - Loss: 0.9071
+Epoch 28/30 - Loss: 0.8721
+Epoch 29/30 - Loss: 0.8457
+Epoch 30/30 - Loss: 0.8279
+  Val Loss: 0.8751
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+
+Training done! Weights saved to: D:\sam2\brain_mri_data\final_lora_weights.pth
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\inference_lora.py
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  LoRA+BitFit可训练参数: 502 个
+  冻结参数: 460 个
+Loading LoRA weights...
+  LoRA weights loaded!
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.565 IoU=0.394
+  [2/30] brain_001.png: Dice=0.615 IoU=0.444
+  [3/30] brain_002.png: Dice=0.726 IoU=0.569
+  [4/30] brain_003.png: Dice=0.641 IoU=0.472
+  [5/30] brain_004.png: Dice=0.773 IoU=0.630
+  [6/30] brain_005.png: Dice=0.690 IoU=0.526
+  [7/30] brain_006.png: Dice=0.609 IoU=0.438
+  [8/30] brain_007.png: Dice=0.712 IoU=0.553
+  [9/30] brain_008.png: Dice=0.713 IoU=0.554
+  [10/30] brain_009.png: Dice=0.218 IoU=0.122
+  [11/30] brain_010.png: Dice=0.787 IoU=0.649
+  [12/30] brain_011.png: Dice=0.813 IoU=0.685
+  [13/30] brain_012.png: Dice=0.487 IoU=0.322
+  [14/30] brain_013.png: Dice=0.702 IoU=0.541
+  [15/30] brain_014.png: Dice=0.313 IoU=0.186
+  [16/30] brain_015.png: Dice=0.303 IoU=0.179
+  [17/30] brain_016.png: Dice=0.490 IoU=0.324
+  [18/30] brain_017.png: Dice=0.544 IoU=0.373
+  [19/30] brain_018.png: Dice=0.832 IoU=0.713
+  [20/30] brain_019.png: Dice=0.809 IoU=0.680
+  [21/30] brain_020.png: Dice=0.795 IoU=0.660
+  [22/30] brain_021.png: Dice=0.550 IoU=0.379
+  [23/30] brain_022.png: Dice=0.607 IoU=0.435
+  [24/30] brain_023.png: Dice=0.716 IoU=0.558
+  [25/30] brain_024.png: Dice=0.612 IoU=0.441
+  [26/30] brain_025.png: Dice=0.562 IoU=0.391
+  [27/30] brain_026.png: Dice=0.821 IoU=0.696
+  [28/30] brain_027.png: Dice=0.632 IoU=0.462
+  [29/30] brain_028.png: Dice=0.829 IoU=0.708
+  [30/30] brain_029.png: Dice=0.705 IoU=0.544
+
+==================================================
+Average Dice: 0.6391
+Average IoU:  0.4877
+Best Dice:    0.8321
+Worst Dice:   0.2179
+Dice > 0.5:   25/30
+Dice > 0.7:   14/30
+Results saved to: D:\sam2\output
+==================================================
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\lora_module.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 7 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit trainable: 456
+  Frozen: 460
+Parameter stats:
+  Total:       224,470,194
+  Trainable:       369,014 (0.16%)
+  Frozen:      224,101,180 (99.84%)
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 30 epochs (with 5 points + bbox)...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 196, in <module>
+    low_res_masks, _ = predict_with_grad(
+  File "D:\sam2\train_sam2_lora.py", line 107, in predict_with_grad
+    low_res_masks, iou_predictions, _, _ = sam2_model.sam_mask_decoder(
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\mask_decoder.py", line 136, in forward
+    masks, iou_pred, mask_tokens_out, object_score_logits = self.predict_masks(
+  File "D:\sam2\sam2\modeling\sam\mask_decoder.py", line 213, in predict_masks
+    hs, src = self.transformer(src, pos_src, tokens)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 95, in forward
+    queries, keys = layer(
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 161, in forward
+    queries = self.self_attn(q=queries, k=queries, v=queries)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\sam2\modeling\sam\transformer.py", line 232, in forward
+    q = self.q_proj(q)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\sam2_env\lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\sam2\lora_module.py", line 33, in forward
+    lora_out = (x @ self.lora_A) @ self.lora_B * self.scaling
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat2 in method wrapper_CUDA_mm)
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\lora_module.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 7 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit trainable: 456
+  Frozen: 460
+Parameter stats:
+  Total:       224,470,194
+  Trainable:       369,014 (0.16%)
+  Frozen:      224,101,180 (99.84%)
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 30 epochs (with 5 points + bbox)...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/30 - Loss: 1.2306
+Epoch 2/30 - Loss: 1.2509
+Epoch 3/30 - Loss: 1.1443
+Epoch 4/30 - Loss: 1.1535
+Epoch 5/30 - Loss: 1.0925
+  Val Loss: 1.0697
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/30 - Loss: 1.0602
+Epoch 7/30 - Loss: 1.0574
+Epoch 8/30 - Loss: 1.0508
+Epoch 9/30 - Loss: 1.0455
+Epoch 10/30 - Loss: 1.0423
+  Val Loss: 1.0382
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/30 - Loss: 1.0399
+Epoch 12/30 - Loss: 1.0383
+Epoch 13/30 - Loss: 1.0363
+Epoch 14/30 - Loss: 1.0331
+Epoch 15/30 - Loss: 1.0306
+  Val Loss: 1.0309
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/30 - Loss: 1.0296
+Epoch 17/30 - Loss: 1.0309
+Epoch 18/30 - Loss: 1.0286
+Epoch 19/30 - Loss: 1.0260
+Epoch 20/30 - Loss: 1.0259
+  Val Loss: 1.0209
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 21/30 - Loss: 1.0239
+Epoch 22/30 - Loss: 1.0207
+Epoch 23/30 - Loss: 1.0220
+Epoch 24/30 - Loss: 1.0178
+Epoch 25/30 - Loss: 1.0168
+  Val Loss: 1.0123
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 26/30 - Loss: 1.0140
+Epoch 27/30 - Loss: 1.0093
+Epoch 28/30 - Loss: 1.0066
+Epoch 29/30 - Loss: 1.0016
+Epoch 30/30 - Loss: 0.9950
+  Val Loss: 0.9910
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+
+Training done! Weights saved to: D:\sam2\brain_mri_data\final_lora_weights.pth
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\lora_module.py
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 7 LoRA layers
+
+Enabling LoRA + BitFit...
+  LoRA+BitFit trainable: 456
+  Frozen: 460
+Parameter stats:
+  Total:       224,470,194
+  Trainable:       369,014 (0.16%)
+  Frozen:      224,101,180 (99.84%)
+
+Parameter groups:
+  Decoder LoRA: 14 params
+  Encoder LoRA: 0 params
+  BitFit bias:  442 params
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 30 epochs...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/30 - Loss: 1.2173
+Epoch 2/30 - Loss: 1.2352
+Epoch 3/30 - Loss: 1.2601
+Epoch 4/30 - Loss: 1.1526
+Epoch 5/30 - Loss: 1.0993
+  Val Loss: 1.0689
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/30 - Loss: 1.0845
+Epoch 7/30 - Loss: 1.0567
+Epoch 8/30 - Loss: 1.0529
+Epoch 9/30 - Loss: 1.0459
+Epoch 10/30 - Loss: 1.0474
+  Val Loss: 1.0458
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/30 - Loss: 1.0439
+Epoch 12/30 - Loss: 1.0414
+Epoch 13/30 - Loss: 1.0397
+Epoch 14/30 - Loss: 1.0388
+Epoch 15/30 - Loss: 1.0376
+  Val Loss: 1.0371
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/30 - Loss: 1.0345
+Epoch 17/30 - Loss: 1.0313
+Epoch 18/30 - Loss: 1.0321
+Epoch 19/30 - Loss: 1.0320
+Epoch 20/30 - Loss: 1.0304
+  Val Loss: 1.0308
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 21/30 - Loss: 1.0304
+Traceback (most recent call last):
+  File "D:\sam2\train_sam2_lora.py", line 200, in <module>
+    point_coords, point_labels, bbox = get_prompts_from_gt(gt, DEVICE)
+  File "D:\sam2\train_sam2_lora.py", line 127, in get_prompts_from_gt
+    point_coords = torch.tensor(points[None, :, :], dtype=torch.float32, device=device)
+KeyboardInterrupt
+^C
+(D:\sam2_env) D:\sam2>notepad D:\sam2\lora_module.py
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 7 LoRA layers
+
+Enabling training (MedSAM style)...
+  Trainable: 145
+  Frozen: 771
+Parameter stats:
+  Total:       224,470,194
+  Trainable:     4,238,661 (1.89%)
+  Frozen:      220,231,533 (1.89%)
+
+Parameter groups:
+  LoRA:           14 params
+  Decoder other:  131 params
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Training for 30 epochs (MedSAM: full decoder trainable)...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/30 - Loss: 1.1501
+Epoch 2/30 - Loss: 1.0379
+Epoch 3/30 - Loss: 1.0342
+Epoch 4/30 - Loss: 1.0286
+Epoch 5/30 - Loss: 1.0179
+  Val Loss: 1.0013
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/30 - Loss: 1.0066
+Epoch 7/30 - Loss: 0.9929
+Epoch 8/30 - Loss: 0.9829
+Epoch 9/30 - Loss: 0.9156
+Epoch 10/30 - Loss: 0.9517
+  Val Loss: 0.9790
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/30 - Loss: 0.8799
+Epoch 12/30 - Loss: 0.8121
+Epoch 13/30 - Loss: 0.7991
+Epoch 14/30 - Loss: 0.7738
+Epoch 15/30 - Loss: 0.6821
+  Val Loss: 0.7364
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/30 - Loss: 0.6658
+Epoch 17/30 - Loss: 0.6277
+Epoch 18/30 - Loss: 0.5992
+Epoch 19/30 - Loss: 0.5157
+Epoch 20/30 - Loss: 0.5455
+  Val Loss: 0.7312
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 21/30 - Loss: 0.4953
+Epoch 22/30 - Loss: 0.5186
+Epoch 23/30 - Loss: 0.5140
+Epoch 24/30 - Loss: 0.4151
+Epoch 25/30 - Loss: 0.4387
+  Val Loss: 0.7422
+Epoch 26/30 - Loss: 0.4873
+Epoch 27/30 - Loss: 0.4761
+Epoch 28/30 - Loss: 0.4213
+Epoch 29/30 - Loss: 0.3668
+Epoch 30/30 - Loss: 0.3182
+  Val Loss: 0.6403
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+
+Training done! Weights saved to: D:\sam2\brain_mri_data\final_lora_weights.pth
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\inference_lora.py
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  Trainable: 145
+  Frozen: 771
+Loading trained weights...
+  Weights loaded!
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.000 IoU=0.000
+  [2/30] brain_001.png: Dice=0.015 IoU=0.008
+  [3/30] brain_002.png: Dice=0.730 IoU=0.575
+  [4/30] brain_003.png: Dice=0.549 IoU=0.378
+  [5/30] brain_004.png: Dice=0.000 IoU=0.000
+  [6/30] brain_005.png: Dice=0.010 IoU=0.005
+  [7/30] brain_006.png: Dice=0.000 IoU=0.000
+  [8/30] brain_007.png: Dice=0.726 IoU=0.569
+  [9/30] brain_008.png: Dice=0.740 IoU=0.588
+  [10/30] brain_009.png: Dice=0.240 IoU=0.136
+  [11/30] brain_010.png: Dice=0.000 IoU=0.000
+  [12/30] brain_011.png: Dice=0.000 IoU=0.000
+  [13/30] brain_012.png: Dice=0.483 IoU=0.318
+  [14/30] brain_013.png: Dice=0.391 IoU=0.243
+  [15/30] brain_014.png: Dice=0.000 IoU=0.000
+  [16/30] brain_015.png: Dice=0.195 IoU=0.108
+  [17/30] brain_016.png: Dice=0.437 IoU=0.280
+  [18/30] brain_017.png: Dice=0.396 IoU=0.247
+  [19/30] brain_018.png: Dice=0.351 IoU=0.213
+  [20/30] brain_019.png: Dice=0.670 IoU=0.504
+  [21/30] brain_020.png: Dice=0.261 IoU=0.150
+  [22/30] brain_021.png: Dice=0.561 IoU=0.390
+  [23/30] brain_022.png: Dice=0.410 IoU=0.258
+  [24/30] brain_023.png: Dice=0.000 IoU=0.000
+  [25/30] brain_024.png: Dice=0.177 IoU=0.097
+  [26/30] brain_025.png: Dice=0.000 IoU=0.000
+  [27/30] brain_026.png: Dice=0.653 IoU=0.485
+  [28/30] brain_027.png: Dice=0.229 IoU=0.129
+  [29/30] brain_028.png: Dice=0.000 IoU=0.000
+  [30/30] brain_029.png: Dice=0.000 IoU=0.000
+
+==================================================
+Average Dice: 0.2742
+Average IoU:  0.1894
+Best Dice:    0.7404
+Worst Dice:   0.0000
+Dice > 0.5:   7/30
+Dice > 0.7:   3/30
+Dice > 0.8:   0/30
+Results saved to: D:\sam2\output
+==================================================
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\inference_lora.py
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  Trainable: 145
+  Frozen: 771
+Loading trained weights...
+  Saved keys: 917
+  Model keys: 917
+  Missing (not in saved): 0
+  Extra (not in model): 0
+  Load result - missing: 0, unexpected: 0
+
+Verifying weights loaded correctly...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.668 IoU=0.502
+  [2/30] brain_001.png: Dice=0.741 IoU=0.589
+  [3/30] brain_002.png: Dice=0.626 IoU=0.456
+  [4/30] brain_003.png: Dice=0.731 IoU=0.575
+  [5/30] brain_004.png: Dice=0.000 IoU=0.000
+  [6/30] brain_005.png: Dice=0.867 IoU=0.765
+  [7/30] brain_006.png: Dice=0.367 IoU=0.225
+  [8/30] brain_007.png: Dice=0.006 IoU=0.003
+  [9/30] brain_008.png: Dice=0.778 IoU=0.637
+  [10/30] brain_009.png: Dice=0.790 IoU=0.653
+  [11/30] brain_010.png: Dice=0.075 IoU=0.039
+  [12/30] brain_011.png: Dice=0.840 IoU=0.725
+  [13/30] brain_012.png: Dice=0.531 IoU=0.362
+  [14/30] brain_013.png: Dice=0.824 IoU=0.700
+  [15/30] brain_014.png: Dice=0.715 IoU=0.557
+  [16/30] brain_015.png: Dice=0.669 IoU=0.503
+  [17/30] brain_016.png: Dice=0.529 IoU=0.359
+  [18/30] brain_017.png: Dice=0.372 IoU=0.228
+  [19/30] brain_018.png: Dice=0.772 IoU=0.628
+  [20/30] brain_019.png: Dice=0.433 IoU=0.276
+  [21/30] brain_020.png: Dice=0.563 IoU=0.392
+  [22/30] brain_021.png: Dice=0.862 IoU=0.757
+  [23/30] brain_022.png: Dice=0.650 IoU=0.481
+  [24/30] brain_023.png: Dice=0.845 IoU=0.732
+  [25/30] brain_024.png: Dice=0.446 IoU=0.287
+  [26/30] brain_025.png: Dice=0.742 IoU=0.590
+  [27/30] brain_026.png: Dice=0.854 IoU=0.746
+  [28/30] brain_027.png: Dice=0.843 IoU=0.729
+  [29/30] brain_028.png: Dice=0.844 IoU=0.730
+  [30/30] brain_029.png: Dice=0.705 IoU=0.544
+
+==================================================
+Average Dice: 0.6229
+Average IoU:  0.4923
+Best Dice:    0.8671
+Worst Dice:   0.0000
+Dice > 0.5:   23/30
+Dice > 0.7:   16/30
+Dice > 0.8:   8/30
+Results saved to: D:\sam2\output
+==================================================
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\inference_lora.py
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  Trainable: 145
+  Frozen: 771
+Loading trained weights...
+  Missing keys: 0, Unexpected: 0
+  Weights loaded!
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.764 IoU=0.618
+  [2/30] brain_001.png: Dice=0.766 IoU=0.621
+  [3/30] brain_002.png: Dice=0.767 IoU=0.622
+  [4/30] brain_003.png: Dice=0.678 IoU=0.513
+  [5/30] brain_004.png: Dice=0.010 IoU=0.005
+  [6/30] brain_005.png: Dice=0.865 IoU=0.762
+  [7/30] brain_006.png: Dice=0.412 IoU=0.260
+  [8/30] brain_007.png: Dice=0.324 IoU=0.194
+  [9/30] brain_008.png: Dice=0.738 IoU=0.585
+  [10/30] brain_009.png: Dice=0.857 IoU=0.749
+  [11/30] brain_010.png: Dice=0.144 IoU=0.077
+  [12/30] brain_011.png: Dice=0.853 IoU=0.744
+  [13/30] brain_012.png: Dice=0.812 IoU=0.683
+  [14/30] brain_013.png: Dice=0.672 IoU=0.506
+  [15/30] brain_014.png: Dice=0.562 IoU=0.391
+  [16/30] brain_015.png: Dice=0.841 IoU=0.726
+  [17/30] brain_016.png: Dice=0.816 IoU=0.689
+  [18/30] brain_017.png: Dice=0.395 IoU=0.246
+  [19/30] brain_018.png: Dice=0.797 IoU=0.662
+  [20/30] brain_019.png: Dice=0.433 IoU=0.276
+  [21/30] brain_020.png: Dice=0.598 IoU=0.427
+  [22/30] brain_021.png: Dice=0.754 IoU=0.605
+  [23/30] brain_022.png: Dice=0.746 IoU=0.596
+  [24/30] brain_023.png: Dice=0.859 IoU=0.753
+  [25/30] brain_024.png: Dice=0.462 IoU=0.300
+  [26/30] brain_025.png: Dice=0.792 IoU=0.656
+  [27/30] brain_026.png: Dice=0.881 IoU=0.788
+  [28/30] brain_027.png: Dice=0.831 IoU=0.711
+  [29/30] brain_028.png: Dice=0.818 IoU=0.693
+  [30/30] brain_029.png: Dice=0.740 IoU=0.587
+
+==================================================
+Average Dice: 0.6662
+Average IoU:  0.5348
+Best Dice:    0.8814
+Worst Dice:   0.0097
+Dice > 0.5:   23/30
+Dice > 0.7:   19/30
+Dice > 0.8:   10/30
+Results saved to: D:\sam2\output
+==================================================
+
+(D:\sam2_env) D:\sam2>notepad D:\sam2\train_sam2_lora.py
+
+(D:\sam2_env) D:\sam2>python train_sam2_lora.py
+Device: cuda
+
+Building SAM2 model...
+
+Injecting LoRA (r=8, alpha=16)...
+  Injected 7 LoRA layers
+
+Enabling training (MedSAM style)...
+  Trainable: 145
+  Frozen: 771
+Parameter stats:
+  Total:       224,470,194
+  Trainable:     4,238,661 (1.89%)
+  Frozen:      220,231,533 (1.89%)
+
+Parameter groups:
+  LoRA:           14 params
+  Decoder other:  131 params
+
+Loading dataset...
+  Total image-mask pairs: 30
+  Train: 24, Val: 6
+
+Pre-loading images...
+  Pre-loaded 24 train + 6 val images
+
+Training for 50 epochs with augmentation...
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+Epoch 1/50 - Loss: 1.2398 - LR: 0.000100
+Epoch 2/50 - Loss: 1.0519 - LR: 0.000100
+Epoch 3/50 - Loss: 1.0388 - LR: 0.000099
+Epoch 4/50 - Loss: 1.0333 - LR: 0.000098
+Epoch 5/50 - Loss: 1.0336 - LR: 0.000098
+  Val Loss: 1.0201
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 6/50 - Loss: 1.0314 - LR: 0.000097
+Epoch 7/50 - Loss: 1.0304 - LR: 0.000095
+Epoch 8/50 - Loss: 1.0271 - LR: 0.000094
+Epoch 9/50 - Loss: 1.0258 - LR: 0.000092
+Epoch 10/50 - Loss: 1.0176 - LR: 0.000091
+  Val Loss: 1.0057
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 11/50 - Loss: 1.0113 - LR: 0.000089
+Epoch 12/50 - Loss: 0.9976 - LR: 0.000087
+Epoch 13/50 - Loss: 1.0278 - LR: 0.000084
+Epoch 14/50 - Loss: 0.9924 - LR: 0.000082
+Epoch 15/50 - Loss: 0.9706 - LR: 0.000080
+  Val Loss: 0.9166
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 16/50 - Loss: 0.9247 - LR: 0.000077
+Epoch 17/50 - Loss: 0.9519 - LR: 0.000074
+Epoch 18/50 - Loss: 0.9011 - LR: 0.000072
+Epoch 19/50 - Loss: 0.9732 - LR: 0.000069
+Epoch 20/50 - Loss: 0.9110 - LR: 0.000066
+  Val Loss: 0.7941
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 21/50 - Loss: 0.8570 - LR: 0.000063
+Epoch 22/50 - Loss: 0.8934 - LR: 0.000060
+Epoch 23/50 - Loss: 0.8301 - LR: 0.000057
+Epoch 24/50 - Loss: 0.8411 - LR: 0.000054
+Epoch 25/50 - Loss: 0.8566 - LR: 0.000050
+  Val Loss: 0.7383
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 26/50 - Loss: 0.8313 - LR: 0.000047
+Epoch 27/50 - Loss: 0.8229 - LR: 0.000044
+Epoch 28/50 - Loss: 0.8205 - LR: 0.000041
+Epoch 29/50 - Loss: 0.7383 - LR: 0.000038
+Epoch 30/50 - Loss: 0.7934 - LR: 0.000035
+  Val Loss: 0.7669
+Epoch 31/50 - Loss: 0.6826 - LR: 0.000032
+Epoch 32/50 - Loss: 0.7002 - LR: 0.000029
+Epoch 33/50 - Loss: 0.7090 - LR: 0.000027
+Epoch 34/50 - Loss: 0.7200 - LR: 0.000024
+Epoch 35/50 - Loss: 0.6500 - LR: 0.000021
+  Val Loss: 0.5723
+  Best model saved to D:\sam2\brain_mri_data\best_lora_weights.pth
+Epoch 36/50 - Loss: 0.7137 - LR: 0.000019
+Epoch 37/50 - Loss: 0.7012 - LR: 0.000017
+Epoch 38/50 - Loss: 0.7263 - LR: 0.000014
+Epoch 39/50 - Loss: 0.7070 - LR: 0.000012
+Epoch 40/50 - Loss: 0.6636 - LR: 0.000010
+  Val Loss: 0.6221
+Epoch 41/50 - Loss: 0.6462 - LR: 0.000009
+Epoch 42/50 - Loss: 0.7066 - LR: 0.000007
+Epoch 43/50 - Loss: 0.6619 - LR: 0.000006
+Epoch 44/50 - Loss: 0.6301 - LR: 0.000004
+Epoch 45/50 - Loss: 0.6157 - LR: 0.000003
+  Val Loss: 0.6216
+Epoch 46/50 - Loss: 0.5926 - LR: 0.000003
+Epoch 47/50 - Loss: 0.5808 - LR: 0.000002
+Epoch 48/50 - Loss: 0.6577 - LR: 0.000001
+Epoch 49/50 - Loss: 0.6669 - LR: 0.000001
+Epoch 50/50 - Loss: 0.6131 - LR: 0.000001
+  Val Loss: 0.6737
+
+Training done! Weights saved to: D:\sam2\brain_mri_data\final_lora_weights.pth
+Best val loss: 0.5723
+
+(D:\sam2_env) D:\sam2>python inference_lora.py
+Building SAM2 model...
+Injecting LoRA...
+  Trainable: 145
+  Frozen: 771
+Loading trained weights...
+  Missing keys: 0, Unexpected: 0
+  Weights loaded!
+D:\sam2\sam2\modeling\backbones\hieradet.py:70: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  x = F.scaled_dot_product_attention(
+  [1/30] brain_000.png: Dice=0.737 IoU=0.583
+  [2/30] brain_001.png: Dice=0.538 IoU=0.368
+  [3/30] brain_002.png: Dice=0.324 IoU=0.193
+  [4/30] brain_003.png: Dice=0.632 IoU=0.462
+  [5/30] brain_004.png: Dice=0.000 IoU=0.000
+  [6/30] brain_005.png: Dice=0.517 IoU=0.348
+  [7/30] brain_006.png: Dice=0.745 IoU=0.594
+  [8/30] brain_007.png: Dice=0.481 IoU=0.317
+  [9/30] brain_008.png: Dice=0.011 IoU=0.006
+  [10/30] brain_009.png: Dice=0.399 IoU=0.249
+  [11/30] brain_010.png: Dice=0.303 IoU=0.179
+  [12/30] brain_011.png: Dice=0.772 IoU=0.629
+  [13/30] brain_012.png: Dice=0.182 IoU=0.100
+  [14/30] brain_013.png: Dice=0.383 IoU=0.237
+  [15/30] brain_014.png: Dice=0.502 IoU=0.335
+  [16/30] brain_015.png: Dice=0.000 IoU=0.000
+  [17/30] brain_016.png: Dice=0.779 IoU=0.637
+  [18/30] brain_017.png: Dice=0.230 IoU=0.130
+  [19/30] brain_018.png: Dice=0.645 IoU=0.476
+  [20/30] brain_019.png: Dice=0.668 IoU=0.502
+  [21/30] brain_020.png: Dice=0.314 IoU=0.186
+  [22/30] brain_021.png: Dice=0.577 IoU=0.405
+  [23/30] brain_022.png: Dice=0.000 IoU=0.000
+  [24/30] brain_023.png: Dice=0.737 IoU=0.583
+  [25/30] brain_024.png: Dice=0.402 IoU=0.251
+  [26/30] brain_025.png: Dice=0.661 IoU=0.493
+  [27/30] brain_026.png: Dice=0.320 IoU=0.191
+  [28/30] brain_027.png: Dice=0.673 IoU=0.507
+  [29/30] brain_028.png: Dice=0.392 IoU=0.244
+  [30/30] brain_029.png: Dice=0.310 IoU=0.183
+
+==================================================
+Average Dice: 0.4411
+Average IoU:  0.3129
+Best Dice:    0.7786
+Worst Dice:   0.0000
+Dice > 0.5:   14/30
+Dice > 0.7:   5/30
+Dice > 0.8:   0/30
+Results saved to: D:\sam2\output
+==================================================
+
+(D:\sam2_env) D:\sam2>
